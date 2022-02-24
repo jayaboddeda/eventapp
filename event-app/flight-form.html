@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
+    <title>Eventify</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header header--page header--fixed">
+        <div class="header__inner">
+            <div class="header__icon"><a href="main.html"><img src="imgs/arrow-back.svg" alt="" title="" /></a></div>
+            <div class="header__logo header__logo--text"><a href="#">Eventify</a></div>
+            <div class="header__icon header__icon--empty-space"></div>
+        </div>
+    </header>
+    <div class="page__content page__content--with-header page__content--with-bottom-nav booking-form-content">
+        <div class="form-content">
+            <div class="booking-options">
+                <button class="option-btn heading-underline active" type="button" value="round-trip">Rounded
+                    Trip</button>
+                <button class="option-btn" type="button" value="one-way">One Way</button>
+            </div>
+            <form class="booking-form">
+                <div class="row input-first-row">
+                    <div class="col-12 input-wrap">
+                        <label for="fromCities" class="flight-label">From</label>
+                        <select class="form-control select-cities" id="fromCities">
+                        </select>
+                    </div>
+                    <div class="col-12 input-wrap">
+                        <label for="toCities" class="flight-label">To</label>
+                        <select class="form-control select-cities" id="toCities">
+                        </select>
+                    </div>
+                    <div class="location-swap shadow">
+                        <a href="javascript:;" id="locationSwapBtn"><img src="imgs/location-swap.svg"></a>
+                    </div>
+                </div>
+                <div class="row input-second-row">
+                    <div class="col-12 input-wrap">
+                        <label for="departureDate" class="flight-label">Departure Date</label>
+                        <input type="date" class="form-control" id="dapartureDate">
+                    </div>
+                    <div class="col-12 input-wrap" id="returnInputWrap">
+                        <label for="returnDate" class="flight-label">Return Date</label>
+                        <input type="date" class="form-control" id="returnDate">
+                    </div>
+                    <div class="col-12 input-wrap">
+                        <label for="travellers" class="flight-label">No.of Travellers</label>
+                        <input type="text" class="form-control" id="travellers" value="3">
+                    </div>
+                </div>
+                <div class="save-btn-wrap">
+                    <input type="submit" class="save-btn text-center" id="flightFormSaveBtn" value="Save">
+                </div>
+            </form>
+            <!-- Success Msg -->
+            <div id="successMsgPopup"></div>
+        </div>
+    </div>
+
+    <!-- Bootom Navigation -->
+    <div id="bottom-toolbar" class="bottom-toolbar">
+    </div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/cookie.min.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        $('.booking-options button').click(function () {
+            $('.booking-options button.active').removeClass('active heading-underline');
+            $(this).addClass('active heading-underline');
+            if ($(this).val() == 'one-way') {
+                $('#returnDate').prop('disabled', true);
+                $('#returnInputWrap').css('opacity', '0.5');
+            } else {
+                $('#returnDate').prop('disabled', false);
+                $('#returnInputWrap').css('opacity', '1');
+            }
+        });
+
+        $('#locationSwapBtn').click(function () {
+            const fromCitiesVal = $('#fromCities').val();
+            const toCitiesVal = $('#toCities').val();
+            $('#toCities').val(fromCitiesVal);
+            $('#fromCities').val(toCitiesVal);
+        });
+
+        $('.select-cities').select2();
+    </script>
+</body>
+
+</html>

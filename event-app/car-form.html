@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
+    <title>Eventify</title>
+    <link rel="stylesheet" href="../../vendor/swiper/swiper.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header header--page header--fixed">
+        <div class="header__inner">
+            <div class="header__icon"><a href="main.html"><img src="imgs/arrow-back.svg" alt="" title="" /></a></div>
+            <div class="header__logo header__logo--text"><a href="#">Mobio<strong>Kit</strong></a></div>
+            <div class="header__icon header__icon--empty-space"></div>
+        </div>
+    </header>
+    <div class="page__content page__content--with-header page__content--with-bottom-nav flight-form-content">
+        <div class="form-content">
+            <div class="form-top-content">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link heading-underline active" type="button" value="round-trip">Book
+                            Car</button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="row input-first-row">
+                        <label for="fromSelect" class="flight-label">From</label>
+                        <div class="col-12 input-wrap">
+                            <div class="input-icon-wrap">
+                                <!-- <img src="imgs/location.svg" class="input-icon"> -->
+                            </div>
+                            <div class="input-content-wrap">
+                                <select class="input-select form-control" id="fromSelect">
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Vizag">Vizag</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label for="toSelect" class="flight-label">To</label>
+                        <div class="col-12 input-wrap">
+                            <div class="input-icon-wrap">
+                                <!-- <img src="imgs/location.svg" class="input-icon"> -->
+                            </div>
+                            <div class="input-content-wrap">
+                                <select class="input-select form-control" id="toSelect">
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Vizag">Vizag</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="location-swap shadow">
+                            <a href="javascript:;" id="locationSwapBtn"><img src="imgs/location-swap.svg"></a>
+                        </div>
+                    </div>
+                    <div class="row input-second-row">
+                        <label for="input-select" class="flight-label">Pick Up Date</label>
+                        <div class="col-12 input-wrap">
+                            <div class="input-content-wrap">
+                                <input type="date" id="date-travel" name="date">
+                            </div>
+                        </div>
+
+
+
+                        <label for="input-select" class="flight-label">Pick Up Time</label>
+                        <div class="col-12 input-wrap">
+                            <div class="input-content-wrap">
+                                <input type="time" id="appt" name="appt">
+                            </div>
+                        </div>
+
+                        <label for="input-select" class="flight-label">No.of Guests</label>
+                        <div class="col-12 input-wrap">
+                            <div class="input-icon-wrap">
+                                <i class="fas fa-pen"></i>
+                            </div>
+                            <div class="input-content-wrap">
+                                <input type="text" class="form-control" id="input-passeneger" value="3">
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-12 input-wrap">
+                            <div class="input-icon-wrap">
+                                <img src="imgs/location.svg" class="input-icon">
+                            </div>
+                            <div class="input-content-wrap">
+                                <label for="input-business">Business Class</label>
+                                <input type="text" class="form-control" id="input-business" value="3">
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+                tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img class="w-80" src="./imgs/alert-pic.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="save-btn-wrap text-center"></div><a class="save-btn text-center" data-bs-toggle="modal"
+                href="#exampleModalToggle" role="button">Save</a>
+        </div>
+
+    </div>
+    </div>
+    <!-- Bootom Navigation -->
+    <div id="bottom-toolbar" class="bottom-toolbar">
+    </div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/swiper-init.js"></script>
+    <script src="js/jquery.custom.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $('.nav-tabs button').click(function () {
+            $('.nav-tabs button.active').removeClass('active heading-underline');
+            $(this).addClass('active heading-underline');
+            if ($(this).val() == 'one-way') {
+                $('#returnSelect').prop('disabled', true);
+                $('#returnInputWrap').css('opacity', '0.5');
+            } else {
+                $('#returnSelect').prop('disabled', false);
+                $('#returnInputWrap').css('opacity', '1');
+            }
+        });
+
+        $('#locationSwapBtn').click(function () {
+            const fromSelectVal = $('#fromSelect').val();
+            const toSelectVal = $('#toSelect').val();
+            $('#toSelect').val(fromSelectVal);
+            $('#fromSelect').val(toSelectVal);
+        });
+
+    </script>
+</body>
+
+</html>

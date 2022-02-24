@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
+    <title>Eventify</title>
+    <link rel="stylesheet" href="../../vendor/swiper/swiper.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header header--page header--fixed">
+        <div class="header__inner">
+            <div class="header__icon"><a href="main.html"><img src="imgs/arrow-back.svg" alt="" title="" /></a></div>
+            <div class="header__logo header__logo--text"><a href="#">Eventify</a></div>
+            <div class="header__icon header__icon--empty-space"></div>
+        </div>
+    </header>
+    <div class="page__content page__content--with-header page__content--with-bottom-nav flight-form-content">
+        <div class="form-content">
+            <div class="form-top-content">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link heading-underline active" type="button"
+                            value="round-trip">Foods</button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="d-flex ">
+                        <div class="mr-20">
+                            <input type="radio" id="non-veg-cuisines" value="non-veg-cuisines" name="cuisines" checked>
+                            <label for="input-select" class="non-veg text-secondary font-weight-500">Non-veg</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="veg-cuisines" value="veg-cuisines" name="cuisines">
+                            <label for="input-select" class="veg text-secondary font-weight-500">Veg</label>
+                        </div>
+                    </div>
+                </div>
+                <section class="food-poster">
+                    <img src="./imgs/poster.jpg" class="img-poster image-fluid" alt="poster">
+                </section>
+                <section class="cuisine" id="non-veg">
+                    <div class="container">
+                        <div class="row">
+                            <h5 class="cusinie-title">Eat What Makes You Happy</h5>
+                        </div>
+                        <div class="row mt-10">
+                            <div class="col-3 text-center">
+                                <img src="./imgs/cuisine.jpg" class="cuisine-img">
+                                <span class="cusinie-text">Chicken</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/cuisine-8.jpg" class="cuisine-img">
+                                <span class="cusinie-text">Mutton</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/cuisine-2.jpg" class="cuisine-img">
+                                <span class="cusinie-text">Grill Chicken</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/cuisine-3.jpg" class="cuisine-img">
+                                <span class="cusinie-text">Kababas</span>
+                            </div>
+                        </div>
+                        <div class="row mt-20">
+                            <div class="col-3 text-center">
+                                <img src="./imgs/cuisine-4.jpg" class="cuisine-img">
+                                <span class="cusinie-text">Shawarma</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/cuisine-5.jpg" class="cuisine-img">
+                                <span class="cusinie-text">Chill Chicken</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/cuisine-6.jpg" class="cuisine-img">
+                                <span class="cusinie-text"> lolipop</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/cuisine-7.jpg" class="cuisine-img">
+                                <span class="cusinie-text">Mutton </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section class="cuisine" id="veg">
+                    <div class="container">
+                        <div class="row">
+                            <h5 class="cusinie-title">Eat What Makes You Happy</h5>
+                        </div>
+                        <div class="row mt-10">
+                            <div class="col-3 text-center">
+                                <img src="./imgs/veg-1.jpg" class="cuisine-img">
+                                <span class="cusinie-text">veg curry</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/veg-2.jpg" class="cuisine-img">
+                                <span class="cusinie-text">culiflower</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/veg-3.jpg" class="cuisine-img">
+                                <span class="cusinie-text">veg fry</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/veg-4.jpg" class="cuisine-img">
+                                <span class="cusinie-text">carrot</span>
+                            </div>
+                        </div>
+                        <div class="row mt-20">
+                            <div class="col-3 text-center">
+                                <img src="./imgs/veg-1.jpg" class="cuisine-img">
+                                <span class="cusinie-text">brinjal</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/veg-2.jpg" class="cuisine-img">
+                                <span class="cusinie-text">fries</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/veg-3.jpg" class="cuisine-img">
+                                <span class="cusinie-text"> dal</span>
+                            </div>
+                            <div class="col-3 text-center">
+                                <img src="./imgs/veg-4.jpg" class="cuisine-img">
+                                <span class="cusinie-text">beatroot </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="save-btn-wrap text-center"></div><a class="save-btn text-center" data-bs-toggle="modal"
+                href="#exampleModalToggle" role="button">Save</a>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Bootom Navigation -->
+    <div id="bottom-toolbar" class="bottom-toolbar">
+    </div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/swiper-init.js"></script>
+    <script src="js/jquery.custom.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $('.nav-tabs button').click(function () {
+            $('.nav-tabs button.active').removeClass('active heading-underline');
+            $(this).addClass('active heading-underline');
+            if ($(this).val() == 'one-way') {
+                $('#returnSelect').prop('disabled', true);
+                $('#returnInputWrap').css('opacity', '0.5');
+            } else {
+                $('#returnSelect').prop('disabled', false);
+                $('#returnInputWrap').css('opacity', '1');
+            }
+        });
+
+        $('#locationSwapBtn').click(function () {
+            const fromSelectVal = $('#fromSelect').val();
+            const toSelectVal = $('#toSelect').val();
+            $('#toSelect').val(fromSelectVal);
+            $('#fromSelect').val(toSelectVal);
+        });
+
+
+
+
+        // show("#non-veg")
+
+        $('input[type=radio][name=cuisines]').change(function () {
+            if (this.value == 'non-veg-cuisines') {
+                $("#non-veg").attr("style", "display:block")
+                $("#veg").attr("style", "display:none")
+            }
+            else if (this.value == 'veg-cuisines') {
+                $("#veg").attr("style", "display:block")
+                $("#non-veg").attr("style", "display:none")
+            }
+
+        }); $("#veg").attr("style", "display:none")
+
+
+// $('input[type=radio][name=cuisines]').on('change', function() { switch ($(this).val()) { case 'non-veg-cuisines': $("#non-veg").attr("style", "display:none"); break; case 'veg-cuisines': $("#veg").attr("style", "display:block"); break; } });
+
+    </script>
+</body>
+
+</html>
