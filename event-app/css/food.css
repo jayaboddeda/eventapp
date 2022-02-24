@@ -1,0 +1,94 @@
+/* Food Form */
+img.cuisine-img {
+    border-radius: 50%;
+    max-height: 100%;
+    max-width: 100%;
+    height: 70px;
+    width: 70px;
+  }
+  
+  span.cusinie-text {
+    color: black;
+    font-size: 12px;
+  }
+  
+  h5.cusinie-title {
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+    font-weight: 600;
+    color: black;
+  }
+  
+  img.img-poster.image-fluid {
+    width: 100%;
+    border-radius: 10px;
+  }
+  li.text-center.veg {
+    width: 25%;
+    padding: 10px;
+  }
+  span.food-form-cusinies {
+    font-weight: 500;
+    font-size: 15px;
+  }
+  span.saved-forms {
+    font-size: 20px;
+    font-weight: 600;
+    color: gray;
+  }
+  img.checked-img {
+    width: 20%;
+}
+.modal-content.forms {
+    padding: 40px;
+    height: 300px;
+    border-radius: 29px;
+    width: 85%;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+a.goback-form {
+    font-size: 20px;
+    font-weight: 500;
+}
+.col-12.text-center.go-back-form {
+    margin-top: 25px;
+}
+button.btn.btn-primary.forms {
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+}
+.col-12.text-center.next-step {
+    margin-top: 25px;
+}
+input.checked-food-form {
+  position: absolute;
+  margin-top: 77px;
+}
+.col-12.input-wrap {
+  border-radius: 10px;
+}
+
+li.text-center.w-25.food-col {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+span.food-check{
+  position: absolute;
+  margin-top: 20px;
+  pointer-events: none;
+}
+img.food-conform {
+  width: 60px;
+  background: #000;
+  opacity: 0.6;
+  border-radius: 50px;
+  height: 60px;
+  margin-top: -14px;
+}
