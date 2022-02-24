@@ -1,90 +1,114 @@
 $(function () {
-    const serverUrl = 'http://192.168.88.216:92';
-    let sessionId;
+  const serverUrl = "http://192.168.88.216:92";
+  let sessionId;
 
-    const storedCookie = Cookies.get('sessionId');
-    if (storedCookie) {
-        sessionId = storedCookie;
-    }
+  const storedCookie = Cookies.get("sessionId");
+  if (storedCookie) {
+    sessionId = storedCookie;
+  }
 
-    // Login
-    $('#loginBtn').click(function (e) {
-        e.preventDefault();
-        const userName = $('#userName').val();
-        const passWord = $('#passWord').val();
-        if (userName && passWord) {
-            const datastr = {
-                "username": userName,
-                "Password": passWord,
-                "UnibaseId": "",
-                "RememberMe": false
-            }
-            loginUser(JSON.stringify(datastr)).then(function (response) {
-                if (response.status === 0 && response.result) {
-                    sessionId = response.result.sessionId;
-                    Cookies.set('sessionId', sessionId);
-                    window.location.href = '/events.html';
-                }
-            });
+  // Login
+  $("#loginBtn").click(function (e) {
+    e.preventDefault();
+    const userName = $("#userName").val();
+    const passWord = $("#passWord").val();
+    if (userName && passWord) {
+      const datastr = {
+        username: userName,
+        Password: passWord,
+        UnibaseId: "",
+        RememberMe: false,
+      };
+      loginUser(JSON.stringify(datastr)).then(function (response) {
+        if (response.status === 0 && response.result) {
+          sessionId = response.result.sessionId;
+          Cookies.set("sessionId", sessionId);
+          window.location.href = "/events.html";
         }
-    });
+      });
+    }
+  });
 
-    // Get Cities
-    $('.select-cities').on('select2:opening', function () {
-        const select2El = this;
-        getCities().then(function (response) {
-            if (response.result) {
-                $(select2El).select2({
-                    data: response.result
-                });
-            }
-        });
-    });
+  // Get Cities
+  //   $(".select-cities").on("select2:opening", function () {
+  //     const select2El = this;
+  //     getCities().then(function (response) {
+  //       if (response.result) {
+  //         $(select2El).select2({
+  //           data: response.result,
+  //         });
+  //       }
+  //     });
+  //   });
+  bindCities();
+  function bindCities() {
+    if ($(".booking-form").length > 0)
+      getCities().then(function (response) {
+        if (response.result) {
+          var names = JSON.parse(response.result);
 
-    //Booking Form
-    $('#bookingSaveBtn').click(function (e) {
-        e.preventDefault();
-        const url = `${serverUrl}/account/login`;
-        const fromCity = $('#fromCity').val();
-        const toCity = $('#toCity').val();
-        const departureDate = $('#departureDate').val();
-        const returnDate = $('#returnDate').val();
-        const travellers = $('#travellers').val();
+          var data = $.map(names, function (obj) {
+            obj.id = obj.cityid;
+            obj.text = obj.cityname;
 
-        if (fromDate && toDate && departureDate && returnDate && travellers) {
-            const datastr = {
-                "fromCity": fromCity,
-                "toCity": toCity,
-                "departureDate": departureDate,
-                "returnDate": returnDate,
-                "travellers": travellers,
-            }
-            saveBookingForm(JSON.stringify(datastr)).then(function (response) {
-                if (response.status === 0 && response.result.length) {
-                    successMsgPopup();
-                }
-            });
+            return obj;
+          });
+
+          $(".select-cities").prepend('<option selected=""></option>');
+
+          $(".select-cities").select2({
+            width: "100%",
+            data: data,
+            placeholder: "Select a city",
+          });
         }
-    });
+      });
+  }
 
-    // Functions
-    function loginUser(datastr) {
-        const url = `${serverUrl}/account/login`;
-        return postData(url, datastr);
+  //Booking Form
+  $("#bookingSaveBtn").click(function (e) {
+    e.preventDefault();
+    const url = `${serverUrl}/account/login`;
+    const fromCity = $("#fromCity").val();
+    const toCity = $("#toCity").val();
+    const departureDate = $("#departureDate").val();
+    const returnDate = $("#returnDate").val();
+    const travellers = $("#travellers").val();
+
+    if (fromDate && toDate && departureDate && returnDate && travellers) {
+      const datastr = {
+        fromCity: fromCity,
+        toCity: toCity,
+        departureDate: departureDate,
+        returnDate: returnDate,
+        travellers: travellers,
+      };
+      saveBookingForm(JSON.stringify(datastr)).then(function (response) {
+        if (response.status === 0 && response.result.length) {
+          successMsgPopup();
+        }
+      });
     }
+  });
 
-    function saveBookingForm(datastr) {
-        const url = `${serverUrl}/account/login`;
-        return postData(url, datastr);
-    }
+  // Functions
+  function loginUser(datastr) {
+    const url = `${serverUrl}/account/login`;
+    return postData(url, datastr);
+  }
 
-    function getCities() {
-        const url = `${serverUrl}/apis/v4/bizgaze/integrations/events/getcitiesautocomplete`;
-        return getData(url);
-    }
+  function saveBookingForm(datastr) {
+    const url = `${serverUrl}/account/login`;
+    return postData(url, datastr);
+  }
 
-    function successMsgPopup() {
-        const successMsgHtml = `<div class="modal fade" id="successMsgModal" aria-hidden="true" aria-labelledby="successMsgModal"
+  function getCities() {
+    const url = `${serverUrl}/apis/v4/bizgaze/integrations/events/getcitiesautocomplete`;
+    return getData(url);
+  }
+
+  function successMsgPopup() {
+    const successMsgHtml = `<div class="modal fade" id="successMsgModal" aria-hidden="true" aria-labelledby="successMsgModal"
         tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -98,33 +122,33 @@ $(function () {
             </div>
         </div>
     </div>`;
-        $('#successMsgPopup').html(successMsgHtml);
-        $('#successMsgModal').modal('show');
-    }
+    $("#successMsgPopup").html(successMsgHtml);
+    $("#successMsgModal").modal("show");
+  }
 
-    // Ajax Funcations
-    function getData(serviceurl) {
-        return executeAjax("GET", serviceurl, null)
-    }
+  // Ajax Funcations
+  function getData(serviceurl) {
+    return executeAjax("GET", serviceurl, null);
+  }
 
-    function postData(serviceurl, datastr) {
-        return executeAjax("POST", serviceurl, datastr);
-    }
+  function postData(serviceurl, datastr) {
+    return executeAjax("POST", serviceurl, datastr);
+  }
 
-    function executeAjax(method, serviceurl, datastr) {
-        return $.ajax({
-            type: method,
-            url: serviceurl,
-            crossDomain: true,
-            contentType: "application/json",
-            cache: true,
-            jsonp: false,
-            data: datastr,
-            beforeSend: function (xhr) {
-                if (sessionId != undefined && sessionId != null) {
-                    xhr.setRequestHeader("Authorization", "Basic " + sessionId);
-                }
-            }
-        });
-    }
+  function executeAjax(method, serviceurl, datastr) {
+    return $.ajax({
+      type: method,
+      url: serviceurl,
+      crossDomain: true,
+      contentType: "application/json",
+      cache: true,
+      jsonp: false,
+      data: datastr,
+      beforeSend: function (xhr) {
+        if (sessionId != undefined && sessionId != null) {
+          xhr.setRequestHeader("Authorization", "Basic " + sessionId);
+        }
+      },
+    });
+  }
 });
