@@ -68,27 +68,27 @@ $(function () {
   //Booking Form
   $("#bookingSaveBtn").click(function (e) {
     e.preventDefault();
-    const url = `${serverUrl}/account/login`;
-    const fromCity = $("#fromCity").val();
-    const toCity = $("#toCity").val();
+    // const url = `${serverUrl}/apis/v4/bizgaze/integrations/events/createtravelpreferences`;
+    const fromCity = $("#fromCities").val();
+    const toCity = $("#toCities").val();
     const departureDate = $("#departureDate").val();
     const returnDate = $("#returnDate").val();
     const travellers = $("#travellers").val();
 
-    if (fromDate && toDate && departureDate && returnDate && travellers) {
-      const datastr = {
-        fromCity: fromCity,
-        toCity: toCity,
-        departureDate: departureDate,
-        returnDate: returnDate,
-        travellers: travellers,
-      };
-      saveBookingForm(JSON.stringify(datastr)).then(function (response) {
-        if (response.status === 0 && response.result.length) {
-          successMsgPopup();
-        }
-      });
-    }
+    const datastr = {
+      fromcityid: fromCity,
+      tocityid: toCity,
+      fromdate: departureDate,
+      todate: returnDate,
+      passengercount: travellers,
+      preferencename: "Travel",
+      optionname: "Car",
+    };
+    saveBookingForm(JSON.stringify(datastr)).then(function (response) {
+      if (response.status === 0 && response.result.length) {
+        successMsgPopup();
+      }
+    });
   });
 
   // Functions
@@ -98,7 +98,7 @@ $(function () {
   }
 
   function saveBookingForm(datastr) {
-    const url = `${serverUrl}/account/login`;
+    const url = `${serverUrl}/apis/v4/bizgaze/integrations/events/createtravelpreferences`;
     return postData(url, datastr);
   }
 
