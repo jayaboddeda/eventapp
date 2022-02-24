@@ -8,24 +8,26 @@
     <link rel="stylesheet" href="css/swiper.min.css" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/events.css" />
 </head>
 
 <body>
 
     <div class="page page--main" data-page="sliders">
-
-        <header class="header header--page header--fixed">
-            <div class="header__inner">
-                <div class="header__icon"><a href="welcome.html"><img src="imgs/arrow-back.svg" alt="" title="" /></a>
+        <header class="header event-page header--fixed">
+                <!-- <div class="header__icon"><a href="welcome.html"><img src="imgs/arrow-back.svg" alt="" title="" /></a>
                 </div>
                 <div class="header__logo header__logo--text"><a href="#">Eventify</a></div>
-                <div class="header__icon header__icon--empty-space"></div>
-
-            </div>
+                <div class="header__icon header__icon--empty-space"></div> -->
+                <ul class="d-flex align-items-center justify-content-between w-100">
+                    <li><div class="guest-greeting">Hello,</div><div class="guest-name">Abhiram Kolachalam</div>
+                    </li>
+                    <li><span class="notification-icon"><img src="imgs/event-notification.svg"></span></li>
+                </ul>
         </header>
 
         <!-- PAGE CONTENT -->
-        <div class="page__content page__content--with-header page__content--with-bottom-nav events-db-content">
+        <div class="page__content page__content--with-header page__content--with-bottom-nav events-db-content event-page-content">
 
             <div class="page__title-bar">
                 <h3></h3>
@@ -36,7 +38,7 @@
             </div>
 
             <!-- SLIDER SIMPLE -->
-            <div class="swiper-container slider-simple--round-corners slider-init mb-40" data-paginationtype="bullets"
+            <div class="swiper-container slider-simple--round-corners slider-init mb-40 mt-20" data-paginationtype="bullets"
                 data-spacebetweenitems="0" data-itemsperview="1">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide slider-simple__slide">
@@ -46,10 +48,9 @@
                                 <div class="event-db-details">
                                     <h2 class="caption__title">Wedding Invitation Event</h2>
                                     <div class="event-db-bottom-details">
-                                        <div class="caption__desc"><img src="imgs/calendar-white.svg"> <span>Monday Jan
-                                                20
-                                                ,2022</span></div>
-                                        <div class="caption__desc"><img src="imgs/location.svg"> <span>Hyderabad</span>
+                                        <div class="caption__desc"><img src="imgs/calendar (2).svg"><span> Jan
+                                                20,2022</span></div>
+                                        <div class="caption__desc"><img src="imgs/location.svg"> <span> Hyderabad</span>
                                         </div>
                                     </div>
                                 </div>
@@ -61,63 +62,46 @@
                                     </div>
                                     <div class="row plan-trip-content-wrap">
                                         <div class="col-3 plan-trip-item">
+                                            <a href="javascript:;" class="travel-btn text-center plan-trip-content-btn  btn-active">
                                             <div class="trip-img-wrap">
                                                 <img src="imgs/car-white.svg" class="img-fluid trip-img">
                                             </div>
-                                            <span class="trip-title">Travel</span>
+                                            <span class="trip-title mt-20">Travel</span>
+                                        </a>
                                         </div>
                                         <div class="col-3 plan-trip-item">
+                                            <a href="javascript:;" class="commute-btn text-center plan-trip-content-btn">
                                             <div class="trip-img-wrap">
                                                 <img src="imgs/car-white.svg" class="img-fluid trip-img">
                                             </div>
                                             <span class="trip-title">Commute</span>
+                                            </a>
                                         </div>
                                         <div class="col-3 plan-trip-item">
+                                            <a href="javascript:;" class="stay-btn text-center plan-trip-content-btn">
                                             <div class="trip-img-wrap">
-                                                <img src="imgs/stay-white.svg" class="img-fluid trip-img">
+                                                <img src="imgs/stay.svg" class="img-fluid trip-img">
                                             </div>
                                             <span class="trip-title">Stay</span>
+                                            </a>
                                         </div>
                                         <div class="col-3 plan-trip-item">
+                                            <a href="javascript:;" class="dine-btn text-center plan-trip-content-btn">
                                             <div class="trip-img-wrap">
                                                 <img src="imgs/dine-white.svg" class="img-fluid trip-img">
                                             </div>
                                             <span class="trip-title">Dine</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="my-bookings-wrap pb-20">
+                                <div class="my-bookings-wrap pb-20 pt-20">
                                     <div class="page__title-bar">
                                         <h2>My Bookings</h2>
                                     </div>
-                                    <div class="my-bookings-list" id="myBookingsList">
-                                        <div class="my-bookings-card">
-                                            <div class="booking-left-icon">
-                                                <img src="imgs/bag.svg">
-                                            </div>
-                                            <div class="booking-info">
-                                                <div class="trip-location-info">
-                                                    <h1 class="from-location">Dubai</h1>
-                                                    <div class="hr-line"></div>
-                                                    <img src="imgs/round-flight.svg" class="info-flight-img">
-                                                    <div class="hr-line"></div>
-                                                    <h1 class="to-location">America</h1>
-                                                </div>
-                                                <div class="trip-other-info">
-                                                    <ul class="trip-other-info-list">
-                                                        <li class="info-item">
-                                                            <img src="imgs/calendar.svg">
-                                                            <span>Monday jan 20,2022</span>
-                                                        </li>
-                                                        <li class="info-item">
-                                                            <img src="imgs/clock.svg">
-                                                            <span>09:00 am</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="my-bookings-content" > <!--Displaying content div-->
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -144,10 +128,12 @@
                                     </div>
                                     <div class="plan-trip-content-wrap">
                                         <div class="plan-trip-item">
+                                            <a class="travel-btn" href="">
                                             <div class="trip-img-wrap">
                                                 <img src="imgs/car-white.svg" class="img-fluid trip-img">
                                             </div>
                                             <span class="trip-title">Travel</span>
+                                            </a>
                                         </div>
                                         <div class="plan-trip-item">
                                             <div class="trip-img-wrap">
@@ -216,14 +202,14 @@
     <!-- Bootom Navigation -->
     <div id="bottom-toolbar" class="bottom-toolbar">
     </div>
-
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/swiper.min.js"></script>
     <script src="js/swiper-init.js"></script>
     <script src="js/jquery.custom.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/events.js"></script>
+       
 </body>
 
 </html>

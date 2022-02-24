@@ -2007,7 +2007,7 @@ body.panel-closing .bottom-toolbar {
   left: auto;
   top: auto;
   bottom: 0px;
-  margin-right: 10px;
+  margin-right: 30px;
 }
 
 .slider-simple__prev::after {

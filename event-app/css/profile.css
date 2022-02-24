@@ -1,0 +1,78 @@
+.profile-page {
+    background-color: rgb(72,72,72,0.9);
+    padding: 30px 20px;
+}
+.profile-name {
+    font-size: 20px;
+}
+.page.page--main {
+    padding: 120px 20px 20px 20px;
+}
+.guest-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+li.guest-name {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-left: 10px;
+}
+li.guest-name span{
+    margin-left: 2px;
+}
+.profile-pic-change {
+    margin-top: 2px;
+}
+.phone-header {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #D0D0D0;
+}
+.phone-header span{
+    margin-left: 5px;
+}
+.guest-contact-details {
+    padding: 14px;
+    background: #3E3D40;
+    border-radius: 10px;
+    margin-top: 60px;
+}
+.guest-number {
+    font-size: 14px;
+    margin-top: 5px;
+    color: white;
+}
+.guest-phone-number {
+    padding-bottom: 20px;
+    border-bottom: solid 1px white;
+}
+.email-header {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #D0D0D0;
+}
+.email-header span{
+    margin-left: 5px;
+}
+.guest-email-id {
+    font-size: 14px;
+    margin-top: 5px;
+    color: white;
+}
+.guest-emailid {
+    margin-top: 20px;
+}
+button.btn.guest-sign-out {
+    background: #D16969;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    margin-top: 92px;
+}
