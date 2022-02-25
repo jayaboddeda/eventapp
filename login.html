@@ -1,15 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui"
+    />
+    <title>Eventify</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
-	<title>Eventify</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="css/style.css" />
-</head>
+  <body>
+    <div class="page page--login" data-page="login">
+      <div class="login">
+        <div class="login__content">
+          <h2 class="login__title mb-10">Login</h2>
+          <p class="login__text mb-20">Please enter your Phone number</p>
+          <div class="text-center mb-40">
+            <img src="imgs/login-img.png" class="login__img" />
+          </div>
+          <div class="login-form">
+            <form id="LoginForm">
+              <div class="login-form__row">
+                <label class="login-form__label">Mobile Number</label>
+                <input
+                  type="text"
+                  value=""
+                  class="login-form__input required"
+                  id="userName"
+                  placeholder="Please Enter Your Mobile Number"
+                />
+              </div>
+              <div class="login-form__row">
+                <label class="login-form__label">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  value=""
+                  class="login-form__input required"
+                  id="passWord"
+                  placeholder="Please Enter Your Password"
+                />
+              </div>
+              <div class="login-form__row mb-20">
+                <input
+                  type="submit"
+                  class="login-form__submit button button--main button--full"
+                  id="loginBtn"
+                  value="LOGIN"
+                />
+              </div>
+            </form>
+            <div class="login-form__forgot-pass">
+              <a href="forgot-password.html">Forgot Password?</a>
+            </div>
+            <div class="login-form__bottom">
+              <p>Don't have an account?</p>
+              <a href="signup.html" class="button button--blue button--full"
+                >SIGN UP</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- PAGE END -->
 
-<body>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/cookie.min.js"></script>
+    <script src="js/main.js"></script>
 
 	<div class="page page--login" data-page="login">
 
@@ -71,4 +133,12 @@
 	</script>
 </body>
 
+</html>
+    <script>
+      const storedCookie = Cookies.get("sessionId");
+      if (storedCookie) {
+        window.location.href = "/events.html";
+      }
+    </script>
+  </body>
 </html>

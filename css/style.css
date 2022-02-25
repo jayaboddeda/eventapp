@@ -586,12 +586,12 @@ ul.custom-listing--checked li {
 }
 
 .page__content--with-bottom-nav {
-  height: calc(100% - 55px);
+  height: calc(100% - 70px);
 }
 
 .page__content.page__content--with-header.page__content--with-bottom-nav,
 .page__content.page__content--with-bottom-nav.page__content--with-header {
-  height: calc(100% - 55px);
+  height: calc(100% - 70px);
 }
 
 .page__title-bar {
@@ -1104,13 +1104,13 @@ body.panel-closing .bottom-toolbar {
 /*===============================================*/
 .bottom-navigation {
   width: 100%;
-  height: 55px;
+  height: 70px;
   position: absolute;
   bottom: 0px;
   left: 0px;
   z-index: 888;
-  background-color: #fff;
-  padding: 10px 0;
+  background-color: rgb(72,72,72,0.9);
+  padding: 15px 0;
   overflow: hidden;
 }
 
@@ -1136,7 +1136,8 @@ body.panel-closing .bottom-toolbar {
 }
 
 .bottom-navigation__icons li a {
-  color: #909db3;
+  color: #fff;
+  /* color: #909db3; */
 }
 
 .bottom-navigation__icons li img {
@@ -2729,7 +2730,7 @@ body.panel-closing .bottom-toolbar {
 }
 
 .login-form__input {
-  width: calc(100% - 20px);
+  width: 100%;
   border: none;
   background-color: transparent;
   padding: 5px;
@@ -4681,7 +4682,7 @@ a.plyr__controls__item.plyr__control:hover,
 }
 
 .booking-form-content .booking-form {
-  padding: 15px 10px;
+  padding: 15px 10px 0px 10px;
 }
 
 .booking-form-content .booking-form .input-wrap {
@@ -4744,11 +4745,11 @@ a.plyr__controls__item.plyr__control:hover,
 
 .booking-form-content .location-swap {
   position: absolute;
-  top: 50%;
+  top: 57%;
   transform: translateY(-50%);
-  right: 15px;
-  width: 50px;
-  height: 50px;
+  right: 10px;
+  width: 60px;
+  height: 60px;
   border: 1px solid #ccc;
   background-color: #fff;
   border-radius: 50%;
@@ -4759,8 +4760,8 @@ a.plyr__controls__item.plyr__control:hover,
 }
 
 .booking-form-content .location-swap img {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
 }
 
 .booking-form-content #returnSelect:disabled {
@@ -4885,4 +4886,35 @@ h5.cusinie-title {
 img.img-poster.image-fluid {
   width: 100%;
   border-radius: 10px;
+}
+
+.success-msg-modal .modal-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 85%;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.success-msg-modal .modal-content .success-img{
+  width: 50px;
+}
+
+.success-msg-modal .modal-content .success-title{
+  font-size: 20px;
+  font-weight: 500;
+  color: #212529;
+}
+
+.success-msg-modal .modal-content .next-btn{
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 5px 25px;
+  width: 60%;
+}
+
+.success-msg-modal .modal-content .goback-link{
+  font-size: 16px;
+  font-weight: 500;
 }

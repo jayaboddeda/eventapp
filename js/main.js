@@ -29,18 +29,8 @@ $(function () {
     }
   });
 
-  // Get Cities
-  //   $(".select-cities").on("select2:opening", function () {
-  //     const select2El = this;
-  //     getCities().then(function (response) {
-  //       if (response.result) {
-  //         $(select2El).select2({
-  //           data: response.result,
-  //         });
-  //       }
-  //     });
-  //   });
   bindCities();
+
   function bindCities() {
     if ($(".booking-form").length > 0)
       getCities().then(function (response) {
@@ -109,20 +99,16 @@ $(function () {
   }
 
   function successMsgPopup() {
-    const successMsgHtml = `<div class="modal fade" id="successMsgModal" aria-hidden="true" aria-labelledby="successMsgModal"
+    const successMsgHtml = `<div class="modal success-msg-modal fade" id="successMsgModal" aria-hidden="true" aria-labelledby="successMsgModal"
         tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered justify-content-center">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="successMsgModal">Success</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Success
-                </div>
+                <img class="success-img my-5" src="./imgs/checked.png">
+                <span class="success-title mb-5">Successfully Saved</span>
+                <button class="btn btn-primary next-btn mb-5">Next Step</button>
+                <a href="#" class="goback-link mb-5" data-bs-dismiss="modal" aria-label="Close"><u>Go Back</u></a>
             </div>
-        </div>
-    </div>`;
+        </div>`;
     $("#successMsgPopup").html(successMsgHtml);
     $("#successMsgModal").modal("show");
   }
