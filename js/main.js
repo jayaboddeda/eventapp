@@ -32,7 +32,7 @@ $(function () {
   bindCities();
 
   function bindCities() {
-    if ($(".booking-form").length > 0)
+    if ($("#bookingForm").length > 0)
       getCities().then(function (response) {
         if (response.result) {
           var names = JSON.parse(response.result);
@@ -63,7 +63,7 @@ $(function () {
     const departureDate = $("#departureDate").val();
     const returnDate = $("#returnDate").val();
     const travellers = $("#travellers").val();
-    const optionname = $("#booking-form").attr("data-formtype");
+    const optionname = $("#bookingForm").attr("data-formtype");
 
     const datastr = {
       fromcityid: fromCity,
