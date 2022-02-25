@@ -29,18 +29,8 @@ $(function () {
     }
   });
 
-  // Get Cities
-  //   $(".select-cities").on("select2:opening", function () {
-  //     const select2El = this;
-  //     getCities().then(function (response) {
-  //       if (response.result) {
-  //         $(select2El).select2({
-  //           data: response.result,
-  //         });
-  //       }
-  //     });
-  //   });
   bindCities();
+
   function bindCities() {
     if ($(".booking-form").length > 0)
       getCities().then(function (response) {
@@ -83,7 +73,7 @@ $(function () {
       todate: returnDate,
       passengercount: travellers,
       preferencename: "Travel",
-      optionname: "Car",
+      optionname: optionname,
     };
     saveBookingForm(JSON.stringify(datastr)).then(function (response) {
       if (response.status === 0 && response.result.length) {
