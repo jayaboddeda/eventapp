@@ -74,6 +74,7 @@ $(function () {
     const departureDate = $("#departureDate").val();
     const returnDate = $("#returnDate").val();
     const travellers = $("#travellers").val();
+    const optionname = $("#booking-form").attr("data-formtype");
 
     const datastr = {
       fromcityid: fromCity,
