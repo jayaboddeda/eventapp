@@ -83,7 +83,7 @@ $(function () {
       todate: returnDate,
       passengercount: travellers,
       preferencename: "Travel",
-      optionname: "Car",
+      optionname: optionname,
     };
     saveBookingForm(JSON.stringify(datastr)).then(function (response) {
       if (response.status === 0 && response.result.length) {
