@@ -52,66 +52,8 @@
                     <input type="submit" class="save-btn text-center" id="bookingSaveBtn" value="Save" />
                 </div>
             </form>
-    <div
-      class="page__content page__content--with-header page__content--with-bottom-nav booking-form-content"
-    >
-      <div class="form-content">
-        <div class="booking-options">
-          <button
-            class="option-btn heading-underline active"
-            type="button"
-            value="round-trip"
-          >
-            Hotels
-          </button>
-        </div>
-        <form class="booking-form">
-          <div class="row input-first-row">
-            <div class="col-12 input-wrap">
-              <label for="checkInDate" class="flight-label"
-                >check-in date</label
-              >
-              <input
-                type="date"
-                class="form-control"
-                id="checkInDate"
-                name="date"
-                required
-              />
-            </div>
-            <div class="col-12 input-wrap">
-              <label for="checkOutDate" class="flight-label"
-                >check-out date</label
-              >
-              <input
-                type="date"
-                class="form-control"
-                id="checkOutDate"
-                name="date"
-                required
-              />
-            </div>
-            <div class="col-12 input-wrap">
-              <label for="noOfGuests" class="flight-label">No.of Guests</label>
-              <input
-                type="text"
-                class="form-control"
-                id="noOfGuests"
-                value="1"
-              />
-            </div>
-          </div>
-          <div class="save-btn-wrap">
-            <input
-              type="submit"
-              class="save-btn text-center"
-              id="bookingSaveBtn"
-              value="Save"
-            />
-          </div>
-        </form>
-      </div>
-    </div>
+   </div>
+   </div>
 
     <!-- Bootom Navigation -->
     <div id="bottom-toolbar" class="bottom-toolbar"></div>
@@ -124,5 +66,43 @@
     <script src="js/swiper-init-swipe.js"></script>
     <script src="js/jquery.custom.js"></script>
     <script src="js/main.js"></script>
+
+
+<script>   
+ //date validations    
+    $('#checkInDate').add
+          const inputDepart = document.querySelector('#checkInDate')
+          inputDepart.addEventListener('input',(e)=>{
+            let date =e.target.value;
+            $('#checkOutDate').attr('min',date)
+          });
+    
+         $(function () { 
+        var dateToday = new Date(); 
+        var dates= dateFormat(dateToday)
+        $('#checkOutDate').attr('min',dates)
+        $('#checkInDate').attr('min',dates)
+    });
+    
+    
+    
+    function dateFormat(date) {
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        month = month + 1;
+    
+        if(month < 10) {
+            month = "0" + month;
+        }
+        var day = date.getDate();
+    
+        if(day < 10) {
+            day = "0" + day;
+        }
+        return year  + "-" + month + "-" + day;
+    }
+    $('#checkInDate').attr(dateFormat(dateNow))
+    //end date validations
+</script>
   </body>
 </html>

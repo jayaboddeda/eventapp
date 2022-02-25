@@ -131,17 +131,17 @@
       $(".select-cities").select2();
 
 //date validations    
-$('#departureDate').add
-      const inputDepart = document.querySelector('#departureDate')
-      inputDepart.addEventListener('input',(e)=>{
-        let date =e.target.value;
-        $('#returnDate').attr('min',date)
-      });
+// $('#departureDate').add
+//       const inputDepart = document.querySelector('#departureDate')
+//       inputDepart.addEventListener('input',(e)=>{
+//         let date =e.target.value;
+//         $('#returnDate').attr('min',date)
+//       });
 
      $(function () { 
     var dateToday = new Date(); 
     var dates= dateFormat(dateToday)
-    $('#returnDate').attr('min',dates)
+  //  $('#returnDate').attr('min',dates)
     $('#departureDate').attr('min',dates)
 });
 
@@ -162,7 +162,7 @@ function dateFormat(date) {
     }
     return year  + "-" + month + "-" + day;
 }
-$('#departureDate').attr(dateFormat(dateNow))
+//$('#departureDate').attr(dateFormat(dateNow))
 //end date validations
 
 

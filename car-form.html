@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-12 input-wrap">
                         <label for="travellers" class="flight-label">No.of Travellers</label>
-                        <input type="text" class="form-control" id="travellers" value="1" required>
+                        <input type="number" class="form-control" id="travellers" value="1" required>
                     </div>
                 </div>
                 <div class="save-btn-wrap">
@@ -68,91 +68,9 @@
             </form>
             <!-- Success Msg -->
             <div id="successMsgPopup"></div>
-    <div
-      class="page__content page__content--with-header page__content--with-bottom-nav booking-form-content"
-    >
-      <div class="form-content">
-        <div class="booking-options">
-          <button
-            class="option-btn heading-underline active"
-            type="button"
-            value="one-way"
-          >
-            One Way
-          </button>
-          <img src="./imgs/car.svg" class="booking-form-icon" />
-        </div>
-        <form class="booking-form">
-          <div class="row input-first-row">
-            <div class="col-12 input-wrap">
-              <label for="fromCities" class="flight-label">From</label>
-              <select
-                class="form-control select-cities"
-                id="fromCities"
-                required
-              ></select>
             </div>
-            <div class="col-12 input-wrap">
-              <label for="toCities" class="flight-label">To</label>
-              <select
-                class="form-control select-cities"
-                id="toCities"
-                required
-              ></select>
             </div>
-            <div class="location-swap shadow">
-              <a href="javascript:;" id="locationSwapBtn"
-                ><img src="imgs/location-swap.svg"
-              /></a>
-            </div>
-          </div>
-          <div class="row input-second-row">
-            <div class="col-12 input-wrap">
-              <label for="departureDate" class="flight-label"
-                >PickUp Date</label
-              >
-              <input
-                type="date"
-                class="form-control"
-                id="dapartureDate"
-                required
-              />
-            </div>
-            <div class="col-12 input-wrap" id="returnInputWrap">
-              <label for="returnDate" class="flight-label">PickUp Time</label>
-              <input
-                type="time"
-                class="form-control"
-                id="returnDate"
-                required
-              />
-            </div>
-            <div class="col-12 input-wrap">
-              <label for="travellers" class="flight-label"
-                >No.of Travellers</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="travellers"
-                value="1"
-                required
-              />
-            </div>
-          </div>
-          <div class="save-btn-wrap">
-            <input
-              type="submit"
-              class="save-btn text-center"
-              id="bookingSaveBtn"
-              value="Save"
-            />
-          </div>
-        </form>
-        <!-- Success Msg -->
-        <div id="successMsgPopup"></div>
-      </div>
-    </div>
+  
 
     <!-- Bootom Navigation -->
     <div id="bottom-toolbar" class="bottom-toolbar"></div>
@@ -228,7 +146,7 @@ function dateFormat(date) {
     }
     return year  + "-" + month + "-" + day;
 }
-$('#pickDate').attr(dateFormat(dateNow))
+//$('#pickDate').attr(dateFormat(dateNow))
 //end date validations
 
 
