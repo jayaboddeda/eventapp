@@ -4682,7 +4682,7 @@ a.plyr__controls__item.plyr__control:hover,
 }
 
 .booking-form-content .booking-form {
-  padding: 15px 10px;
+  padding: 15px 10px 0px 10px;
 }
 
 .booking-form-content .booking-form .input-wrap {
@@ -4745,11 +4745,11 @@ a.plyr__controls__item.plyr__control:hover,
 
 .booking-form-content .location-swap {
   position: absolute;
-  top: 50%;
+  top: 57%;
   transform: translateY(-50%);
-  right: 15px;
-  width: 50px;
-  height: 50px;
+  right: 10px;
+  width: 60px;
+  height: 60px;
   border: 1px solid #ccc;
   background-color: #fff;
   border-radius: 50%;
@@ -4760,8 +4760,8 @@ a.plyr__controls__item.plyr__control:hover,
 }
 
 .booking-form-content .location-swap img {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
 }
 
 .booking-form-content #returnSelect:disabled {
@@ -4886,4 +4886,35 @@ h5.cusinie-title {
 img.img-poster.image-fluid {
   width: 100%;
   border-radius: 10px;
+}
+
+.success-msg-modal .modal-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 85%;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.success-msg-modal .modal-content .success-img{
+  width: 50px;
+}
+
+.success-msg-modal .modal-content .success-title{
+  font-size: 20px;
+  font-weight: 500;
+  color: #212529;
+}
+
+.success-msg-modal .modal-content .next-btn{
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 5px 25px;
+  width: 60%;
+}
+
+.success-msg-modal .modal-content .goback-link{
+  font-size: 16px;
+  font-weight: 500;
 }

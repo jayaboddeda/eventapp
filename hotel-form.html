@@ -1,64 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui"
+    />
     <title>Eventify</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/select2.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="header header--page header--fixed">
-        <div class="header__inner">
-            <div class="header__icon"><a href="welcome.html"><img src="imgs/arrow-back.svg" alt="" title="" /></a>
-            </div>
-            <div class="header__logo header__logo--text"><a href="#">Eventify</a></div>
-            <div class="header__icon header__icon--empty-space"></div>
+      <div class="header__inner">
+        <div class="header__icon">
+          <a href="welcome.html"
+            ><img src="imgs/arrow-back.svg" alt="" title=""
+          /></a>
         </div>
+        <div class="header__logo header__logo--text">
+          <a href="#">Eventify</a>
+        </div>
+        <div class="header__icon header__icon--empty-space"></div>
+      </div>
     </header>
-    <div class="page__content page__content--with-header page__content--with-bottom-nav booking-form-content">
-        <div class="form-content">
-            <div class="booking-options">
-                <button class="option-btn heading-underline active" type="button" value="round-trip">
-                    Hotels
-                </button>
-            </div>
-            <form class="booking-form">
-                <div class="row input-first-row">
-                    <div class="col-12 input-wrap">
-                        <label for="checkInDate" class="flight-label">check-in date</label>
-                        <input type="date" class="form-control" id="checkInDate" name="date" required>
-                    </div>
-                    <div class="col-12 input-wrap">
-                        <label for="checkOutDate" class="flight-label">check-out date</label>
-                        <input type="date" class="form-control" id="checkOutDate" name="date" required>
-                    </div>
-                    <div class="col-12 input-wrap">
-                        <label for="noOfGuests" class="flight-label">No.of Guests</label>
-                        <input type="text" class="form-control" id="noOfGuests" value="1" />
-                    </div>
-                </div>
-                <div class="save-btn-wrap">
-                    <input type="submit" class="save-btn text-center" id="bookingSaveBtn" value="Save" />
-                </div>
-            </form>
+    <div
+      class="page__content page__content--with-header page__content--with-bottom-nav booking-form-content"
+    >
+      <div class="form-content">
+        <div class="booking-options">
+          <button
+            class="option-btn heading-underline active"
+            type="button"
+            value="round-trip"
+          >
+            Hotels
+          </button>
         </div>
+        <form class="booking-form">
+          <div class="row input-first-row">
+            <div class="col-12 input-wrap">
+              <label for="checkInDate" class="flight-label"
+                >check-in date</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="checkInDate"
+                name="date"
+                required
+              />
+            </div>
+            <div class="col-12 input-wrap">
+              <label for="checkOutDate" class="flight-label"
+                >check-out date</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="checkOutDate"
+                name="date"
+                required
+              />
+            </div>
+            <div class="col-12 input-wrap">
+              <label for="noOfGuests" class="flight-label">No.of Guests</label>
+              <input
+                type="text"
+                class="form-control"
+                id="noOfGuests"
+                value="1"
+              />
+            </div>
+          </div>
+          <div class="save-btn-wrap">
+            <input
+              type="submit"
+              class="save-btn text-center"
+              id="bookingSaveBtn"
+              value="Save"
+            />
+          </div>
+        </form>
+      </div>
     </div>
 
     <!-- Bootom Navigation -->
-    <div id="bottom-toolbar" class="bottom-toolbar">
-    </div>
+    <div id="bottom-toolbar" class="bottom-toolbar"></div>
 
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/cookie.min.js"></script>
     <script src="js/select2.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/swiper-init-swipe.js"></script>
+    <script src="js/jquery.custom.js"></script>
     <script src="js/main.js"></script>
-
-
-</body>
-
+  </body>
 </html>
