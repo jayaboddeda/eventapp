@@ -48,11 +48,11 @@
               <select
                 class="form-control select-cities"
                 id="fromCities"
-              ></select>
+              required></select>
             </div>
             <div class="col-12 input-wrap">
               <label for="toCities" class="flight-label">To</label>
-              <select class="form-control select-cities" id="toCities"></select>
+              <select class="form-control select-cities" id="toCities" required></select>
             </div>
             <div class="location-swap shadow">
               <a href="javascript:;" id="locationSwapBtn"
@@ -65,7 +65,7 @@
               <label for="departureDate" class="flight-label"
                 >Departure Date</label
               >
-              <input type="date" class="form-control" id="departureDate" />
+              <input type="date" class="form-control" id="departureDate" required/>
             </div>
 
             <div class="col-12 input-wrap">
@@ -73,10 +73,11 @@
                 >No.of Travellers</label
               >
               <input
-                type="text"
+                type="number"
                 class="form-control"
                 id="travellers"
                 value="3"
+                required
               />
             </div>
           </div>
@@ -125,6 +126,43 @@
         $("#fromCities").val(toCitiesVal);
       });
       $(".select-cities").select2();
+
+//date validations    
+$('#departureDate').add
+      const inputDepart = document.querySelector('#departureDate')
+      inputDepart.addEventListener('input',(e)=>{
+        let date =e.target.value;
+        $('#returnDate').attr('min',date)
+      });
+
+     $(function () { 
+    var dateToday = new Date(); 
+    var dates= dateFormat(dateToday)
+    $('#returnDate').attr('min',dates)
+    $('#departureDate').attr('min',dates)
+});
+
+
+
+function dateFormat(date) {
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    month = month + 1;
+
+    if(month < 10) {
+        month = "0" + month;
+    }
+    var day = date.getDate();
+
+    if(day < 10) {
+        day = "0" + day;
+    }
+    return year  + "-" + month + "-" + day;
+}
+$('#departureDate').attr(dateFormat(dateNow))
+//end date validations
+
+
     </script>
   </body>
 </html>

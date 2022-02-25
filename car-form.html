@@ -43,11 +43,11 @@
                 <div class="row input-second-row">
                     <div class="col-12 input-wrap">
                         <label for="departureDate" class="flight-label">PickUp Date</label>
-                        <input type="date" class="form-control" id="dapartureDate" required>
+                        <input type="date" class="form-control" id="pickDate" required>
                     </div>
                     <div class="col-12 input-wrap" id="returnInputWrap">
                         <label for="returnDate" class="flight-label">PickUp Time</label>
-                        <input type="time" class="form-control" id="returnDate" required>
+                        <input type="time" class="form-control" id="PickTime" required>
                     </div>
                     <div class="col-12 input-wrap">
                         <label for="travellers" class="flight-label">No.of Travellers</label>
@@ -74,6 +74,14 @@
     <script src="js/main.js"></script>
 
     <script>
+
+       var today = new Date();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+$('#PickTime').val(time.slice(0,5));
+
+//$('#PickTime').attr('min',time.slice(0,5))
+
+ 
         $('.booking-options button').click(function () {
             $('.booking-options button.active').removeClass('active heading-underline');
             $(this).addClass('active heading-underline');
@@ -94,6 +102,44 @@
         });
 
         $('.select-cities').select2();
+
+//date validations    
+// $('#departureDate').add
+//       const inputDepart = document.querySelector('#departureDate')
+//       inputDepart.addEventListener('input',(e)=>{
+//         let date =e.target.value;
+//         $('#returnDate').attr('min',date)
+//       });
+
+     $(function () { 
+    var dateToday = new Date(); 
+    var dates= dateFormat(dateToday)
+    // $('#returnDate').attr('min',dates)
+    $('#pickDate').attr('min',dates)
+});
+
+
+
+function dateFormat(date) {
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    month = month + 1;
+
+    if(month < 10) {
+        month = "0" + month;
+    }
+    var day = date.getDate();
+
+    if(day < 10) {
+        day = "0" + day;
+    }
+    return year  + "-" + month + "-" + day;
+}
+$('#pickDate').attr(dateFormat(dateNow))
+//end date validations
+
+
+
     </script>
 </body>
 
