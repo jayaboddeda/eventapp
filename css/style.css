@@ -2729,7 +2729,7 @@ body.panel-closing .bottom-toolbar {
 }
 
 .login-form__input {
-  width: calc(100% - 20px);
+  width: 100%;
   border: none;
   background-color: transparent;
   padding: 5px;
