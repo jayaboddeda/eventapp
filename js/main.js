@@ -75,7 +75,6 @@ $(function () {
       preferencename: "Travel",
       optionname: optionname,
     };
-    successMsgPopup();
     saveBookingForm(JSON.stringify(datastr)).then(function (response) {
       if (response.status === 0 && response.result.length) {
         successMsgPopup();
