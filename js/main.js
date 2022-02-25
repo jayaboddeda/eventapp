@@ -1,5 +1,5 @@
 $(function () {
-  const serverUrl = "http://192.168.88.216:92";
+  const serverUrl = "http://localhost:3088";
   let sessionId;
 
   const storedCookie = Cookies.get("sessionId");
