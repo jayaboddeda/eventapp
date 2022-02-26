@@ -32,7 +32,7 @@ $(function () {
   bindCities();
 
   function bindCities() {
-    if ($(".booking-form").length > 0)
+    if ($("#bookingForm").length > 0)
       getCities().then(function (response) {
         if (response.result) {
           var names = JSON.parse(response.result);
@@ -56,31 +56,30 @@ $(function () {
   }
 
   //Booking Form
-  // $("#bookingSaveBtn").click(function (e) {
-  //   e.preventDefault();
-  //   // const url = `${serverUrl}/apis/v4/bizgaze/integrations/events/createtravelpreferences`;
-  //   const fromCity = $("#fromCities").val();
-  //   const toCity = $("#toCities").val();
-  //   const departureDate = $("#departureDate").val();
-  //   const returnDate = $("#returnDate").val();
-  //   const travellers = $("#travellers").val();
-  //   const optionname = $("#booking-form").attr("data-formtype");
+  $("#bookingSaveBtn").click(function (e) {
+    e.preventDefault();
+    const fromCity = $("#fromCities").val();
+    const toCity = $("#toCities").val();
+    const departureDate = $("#departureDate").val();
+    const returnDate = $("#returnDate").val();
+    const travellers = $("#travellers").val();
+    const optionname = $("#bookingForm").attr("data-formtype");
 
-  //   const datastr = {
-  //     fromcityid: fromCity,
-  //     tocityid: toCity,
-  //     fromdate: departureDate,
-  //     todate: returnDate,
-  //     passengercount: travellers,
-  //     preferencename: "Travel",
-  //     optionname: optionname,
-  //   };
-  //   saveBookingForm(JSON.stringify(datastr)).then(function (response) {
-  //     if (response.status === 0 && response.result.length) {
-  //       successMsgPopup();
-  //     }
-  //   });
-  // });
+    const datastr = {
+      fromcityid: fromCity,
+      tocityid: toCity,
+      fromdate: departureDate,
+      todate: returnDate,
+      passengercount: travellers,
+      preferencename: "Travel",
+      optionname: optionname,
+    };
+    saveBookingForm(JSON.stringify(datastr)).then(function (response) {
+      if (response.status === 0 && response.result.length) {
+        successMsgPopup();
+      }
+    });
+  });
 
   // Functions
   function loginUser(datastr) {
@@ -113,7 +112,7 @@ $(function () {
     $("#successMsgModal").modal("show");
   }
 
-  // Ajax Funcations
+  // Ajax Functions
   function getData(serviceurl) {
     return executeAjax("GET", serviceurl, null);
   }

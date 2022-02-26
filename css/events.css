@@ -1,16 +1,17 @@
 /*header*/
-.event-page {
+.event-header {
     background-color: rgb(72,72,72,0.9);
     padding: 25px 20px;
+    height: auto !important;
 }
 .event-page-content{
     padding-top: 130px;
 }
-.event-page .guest-name{
+.event-header .guest-name{
     font-size: 22px;
     margin-top: 5px;
 }
-.event-page .guest-greeting{
+.event-header .guest-greeting{
     font-size: 18px;
 }
 /*end of header*/
