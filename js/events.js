@@ -18,8 +18,21 @@ getDefaultEvents().then(function (result) {
         $('div[data-allevents="all-events"]').empty();
         for(var i=0; i<response.length; i++){
             if(i==0){activeElement = "swiper-slide-active";}else{activeElement="";}
-            let html = `<div class="swiper-slide slider-simple__slide ${activeElement}" data-eventid="${response[0].eventid}"> <div class="event-info-wrap" data-topBottom="${response[0].eventid}"> <div class="event-top-content" data-top="${response[0].eventid}"> <img src="imgs/event-db-img.jpg" class="img-fluid event-db-img"/> <div class="event-db-details"> <h2 class="caption__title">Wedding Invitation Event</h2> <div class="event-db-bottom-details"> <div class="caption__desc"> <img src="imgs/calendar (2).svg"/><span> Jan 20,2022</span> </div><div class="caption__desc"> <img src="imgs/location.svg"/> <span> Hyderabad</span> </div></div></div></div><div class="event-bottom-content" data-bottom="${response[0].eventid}"> <div class="plan-a-trip-wrap"> <div class="page__title-bar"> <h2>Plan a Trip</h2> </div><div class="row plan-trip-content-wrap"> <div class="col-3 plan-trip-item"> <a href="javascript:;" class="travel-btn text-center plan-trip-content-btn btn-active" > <div class="trip-img-wrap"> <img src="imgs/car-white.svg" class="img-fluid trip-img"/> </div><span class="trip-title mt-20">Travel</span> </a> </div><div class="col-3 plan-trip-item"> <a href="javascript:;" class="commute-btn text-center plan-trip-content-btn" > <div class="trip-img-wrap"> <img src="imgs/car-white.svg" class="img-fluid trip-img"/> </div><span class="trip-title">Commute</span> </a> </div><div class="col-3 plan-trip-item"> <a href="javascript:;" class="stay-btn text-center plan-trip-content-btn" > <div class="trip-img-wrap"> <img src="imgs/stay.svg" class="img-fluid trip-img"/> </div><span class="trip-title">Stay</span> </a> </div><div class="col-3 plan-trip-item"> <a href="javascript:;" class="dine-btn text-center plan-trip-content-btn" > <div class="trip-img-wrap"> <img src="imgs/dine-white.svg" class="img-fluid trip-img"/> </div><span class="trip-title">Dine</span> </a> </div></div></div><div class="my-bookings-wrap pb-20 pt-20"> <div class="page__title-bar"> <h2>My Bookings</h2> </div><div class="my-bookings-content"> </div></div></div></div></div>`;
+            let html = `<div class="swiper-slide slider-simple__slide ${activeElement}" data-eventid="${response[i].eventid}"> <div class="event-info-wrap" data-topBottom="${response[i].eventid}"> <div class="event-top-content" data-top="${response[i].eventid}"> <img src="imgs/event-db-img.jpg" class="img-fluid event-db-img"/> <div class="event-db-details"> <h2 class="caption__title">Wedding Invitation Event</h2> <div class="event-db-bottom-details"> <div class="caption__desc"> <img src="imgs/calendar (2).svg"/><span> Jan 20,2022</span> </div><div class="caption__desc"> <img src="imgs/location.svg"/> <span> Hyderabad</span> </div></div></div></div><div class="event-bottom-content" data-bottom="${response[i].eventid}"> <div class="plan-a-trip-wrap"> <div class="page__title-bar"> <h2>Plan a Trip</h2> </div><div class="row plan-trip-content-wrap"> <div class="col-3 plan-trip-item"> <a href="javascript:;" class="travel-btn text-center plan-trip-content-btn btn-active" > <div class="trip-img-wrap"> <img src="imgs/car-white.svg" class="img-fluid trip-img"/> </div><span class="trip-title mt-20">Travel</span> </a> </div><div class="col-3 plan-trip-item"> <a href="javascript:;" class="commute-btn text-center plan-trip-content-btn" > <div class="trip-img-wrap"> <img src="imgs/car-white.svg" class="img-fluid trip-img"/> </div><span class="trip-title">Commute</span> </a> </div><div class="col-3 plan-trip-item"> <a href="javascript:;" class="stay-btn text-center plan-trip-content-btn" > <div class="trip-img-wrap"> <img src="imgs/stay.svg" class="img-fluid trip-img"/> </div><span class="trip-title">Stay</span> </a> </div><div class="col-3 plan-trip-item"> <a href="javascript:;" class="dine-btn text-center plan-trip-content-btn" > <div class="trip-img-wrap"> <img src="imgs/dine-white.svg" class="img-fluid trip-img"/> </div><span class="trip-title">Dine</span> </a> </div></div></div><div class="my-bookings-wrap pb-20 pt-20"> <div class="page__title-bar"> <h2>My Bookings</h2> </div><div class="my-bookings-content"> </div></div></div></div></div>`;
             $('div[data-allevents="all-events"]').append(html);
+            getpreference(response[i].eventid).then(function (preferResponse) {
+                let preferRes = JSON.parse(preferResponse.result);
+                if(response !=null || response !='' || response !=undefined){
+                    for(var k = 0; k<preferRes.length; k++){
+                        
+                        getBooking(guestid,preferRes.eventid, preferRes.preferencename).then(function (bookingRes) {
+                            let bookRes = JSON.parse(bookingRes.result);
+                            console.log(bookRes);
+                            debugger;
+                        });
+                    }
+                }
+            });
         }
     }
   });
@@ -27,6 +40,16 @@ getDefaultEvents().then(function (result) {
     const url = `${serverUrl}/apis/v4/bizgaze/integrations/events/getevents/guestid/${guestid}`;
     return getData(url);
   }
+
+  function getpreference(eventid){
+    const url = `${serverUrl}/apis/v4/bizgaze/integrations/events/getpreferences/eventid/${eventid}`;
+    return getData(url);
+  }
+  function getBooking(guestid,eventid,preferencename){
+    const url = `${serverUrl}/apis/v4/bizgaze/integrations/events/getoptionsbypreference/guestid/${guestid}/eventid/${eventid}/preferencename/${preferencename}`;
+    return getData(url);
+  }
+
   
 // Default Event Loading bu User Id End here
 
