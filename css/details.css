@@ -1,0 +1,80 @@
+img.img-fluid.event-img {
+    max-height: 300px;
+}
+h2.caption__title {
+    font-size: 26px;
+    padding: 15px 0px;
+}
+.caption__desc {
+    align-items: center;
+    display: flex;
+}
+.caption__desc span{
+    margin-left: 3px;
+}
+.event-db-bottom-details {
+    margin-top: 10px;
+}
+.event-details-content {
+    background: #3E3D40;
+    padding: 18px;
+    border-radius: 20px;
+    margin-top: 30px;
+}
+.des-title {
+    font-size: 20px;
+    color: white;
+    padding-bottom: 10px;
+}
+.event-details-content p{
+    color: white;
+}
+.page.page--main {
+    height: 90%;
+    overflow: scroll;
+}
+img.back-button {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
+/*Accodration CSS*/
+.accordion__label {
+    background: #3E3D40;
+}
+.accordion__input:checked~.accordion__label, .accordion .accordion__label:hover {
+    background-color: #3E3D40;
+    color: #fff;
+}
+.accordion__input:checked~.accordion__content {
+    max-height: 300px;
+    background-color: #3E3D40;
+    padding: 3px 12px;
+}
+.toggle__content li{
+    font-size: 12px;
+    padding: 8px 0px;
+   
+}
+.toggle__content ul{
+    border-bottom: solid 1px rgb(255,255,255,0.1);
+}
+.btn-details-download {
+    background: linear-gradient(145deg,rgb(5,46,131,0.5),rgb(97,37,87,0.5));
+    color: white;
+    border-radius: 6px;
+    margin: 10px 0px;
+    border: solid 1px rgb(255,255,255,0.2);
+    padding: 6px 12px;
+}
+
+.toggle__content ul {
+    padding: 5px 12px;
+}
+.toggle-img {
+    margin-right: 12px;
+}
+.border-btm{
+    border-bottom: solid 1px rgb(255,255,255,0.2);
+}

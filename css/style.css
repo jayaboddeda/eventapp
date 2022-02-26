@@ -4203,15 +4203,13 @@ a.plyr__controls__item.plyr__control:hover,
   width: 100%;
   margin: 0 auto 0 auto;
 }
-
 .toggle__item {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: #292467;
+  background-color: #3E3D40;
   margin-bottom: 1px;
 }
-
 .toggle__input {
   position: absolute;
   opacity: 0;
@@ -4220,7 +4218,8 @@ a.plyr__controls__item.plyr__control:hover,
 
 .toggle__label {
   position: relative;
-  display: block;
+  align-items: center;
+  display: flex;
   cursor: pointer;
   padding: 15px 10px;
   font-size: 1.4rem;
@@ -4229,6 +4228,8 @@ a.plyr__controls__item.plyr__control:hover,
   -webkit-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  font-size: 16px;
+  
 }
 
 .toggle__content {
@@ -4249,8 +4250,9 @@ a.plyr__controls__item.plyr__control:hover,
 
 .toggle__input:checked~.toggle__label,
 .toggle .toggle__label:hover {
-  background-color: #bf62f9;
+  background:linear-gradient(145deg,#052E83, #612557);
   color: #fff;
+  border: none;
 }
 
 .toggle__label span {
@@ -4261,7 +4263,7 @@ a.plyr__controls__item.plyr__control:hover,
   width: 14px;
   height: 14px;
   text-align: center;
-  background-image: url(../../../assets/images/icons/white/arrow-down.svg);
+  background-image: url(../imgs/arrow.svg);
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: 14px;
@@ -4272,7 +4274,7 @@ a.plyr__controls__item.plyr__control:hover,
 
 .toggle__input[type=checkbox]:checked+.toggle__label span {
   transform: rotateX(180deg);
-  background-image: url(../../../assets/images/icons/white/arrow-down.svg);
+  background-image: url(../imgs/arrow.svg);
 }
 
 /* TABLES */
