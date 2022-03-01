@@ -22,6 +22,7 @@
           class="plan-trip-btn"
           data-bs-toggle="modal"
           data-bs-target="#planTripModal"
+          onclick="BookOption(this)"
         >
           Plan your Trip
         </button>
@@ -51,23 +52,36 @@
                 <div class="travel-options d-flex">
                   <div class="travel-option">
                     <div class="travel-img-container active">
-                      <a href="train-form.html">
+                      <a
+                        href="javascript:void(0)"
+                        onclick="travelType(this)"
+                        data-href="train-form.html"
+                      >
                         <img
                           src="imgs/train.svg"
                           class="travel-img p-4 rounded"
-                      /></a>
+                        />
+                      </a>
                     </div>
                   </div>
                   <div class="travel-option">
                     <div class="travel-img-container">
-                      <a href="cruise-form.html">
+                      <a
+                        href="javascript:void(0)"
+                        onclick="travelType(this)"
+                        data-href="cruise-form.html"
+                      >
                         <img src="imgs/ship.svg" class="travel-img p-4 rounded"
                       /></a>
                     </div>
                   </div>
                   <div class="travel-option">
                     <div class="travel-img-container">
-                      <a href="flight-form.html">
+                      <a
+                        href="javascript:void(0)"
+                        onclick="travelType(this)"
+                        data-href="flight-form.html"
+                      >
                         <img
                           src="imgs/flight.svg"
                           class="travel-img p-4 rounded"
@@ -76,7 +90,11 @@
                   </div>
                   <div class="travel-option">
                     <div class="travel-img-container">
-                      <a href="bus-form.html">
+                      <a
+                        onclick="travelType(this)"
+                        href="javascript:void(0)"
+                        data-href="bus-form.html"
+                      >
                         <img src="imgs/bus.svg" class="travel-img p-4 rounded"
                       /></a>
                     </div>
@@ -95,10 +113,78 @@
     <script src="js/main.js"></script>
 
     <script>
-      $(".travel-img-container").click(function () {
+      //$(".travel-img-container").click(function () {
+      function AccommodationType(e) {
+        let href = $(e).attr("data-href");
+        let AccommodationType = $(e).attr("data-optionname");
+        localStorage.setItem("AccommodationType", AccommodationType);
+        window.location.href = `/${href}`;
+      }
+      function travelType(e) {
         $(".travel-img-container").removeClass("active");
-        $(this).addClass("active");
-      });
+        $(e).parent().addClass("active");
+        let Travel = $(e).attr("data-href");
+        let TravelType =
+          Travel.charAt(0)
+            .replace(/-form.html/, "")
+            .toUpperCase() + Travel.replace(/-form.html/, "").slice(1);
+        localStorage.setItem("TravelType", TravelType);
+        window.location.href = `/flight-form.html`;
+      }
+      function BookOption() {
+        $(".travel-options").empty();
+        let preferenceId = localStorage.getItem("preferenceId");
+        _getTravelOptions(preferenceId).then(function (preferResponse) {
+          let response = JSON.parse(preferResponse.result),
+            optionHtml;
+          for (let i = 0; i < response.length; i++) {
+            if (response[i].preferencename == "Travel") {
+              optionHtml = `<div class="travel-img-container p-2 w-25"><a class="d-flex flex-column p-2" href="javascript:void(0)" onclick="travelType(this)" data-href="${response[
+                i
+              ].optionname.toLowerCase()}-form.html"><img src="imgs/${response[
+                i
+              ].optionname.toLowerCase()}.svg" class="travel-img p-4 rounded"></a></div>`;
+            }
+            if (response[i].preferencename == "Accommodation") {
+              optionHtml = `<div class="travel-img-container p-2 w-25"><a class="d-flex flex-column p-2" href="javascript:void(0)" onclick="AccommodationType(this)" data-optionId="${response[i].optionid}" data-optionname="${response[i].optionname}" data-href="hotel-form.html"><img src="imgs/lodge.svg" class="travel-img p-4 rounded"><span>${response[i].optionname}</span></a></div>`;
+            }
+            $(".travel-options").append(optionHtml);
+          }
+          $(".travel-options .travel-img-container:first a").addClass("active");
+        });
+      }
+      function _getTravelOptions(preferenceId) {
+        const url = `${localStorage.getItem(
+          "serverUrl"
+        )}/apis/v4/bizgaze/integrations/events/gettransportoptionsautocomplete/preferenceid/${preferenceId}`;
+        return getData(url);
+      }
+      // Ajax Functions
+      function getData(serviceurl) {
+        return executeAjax("GET", serviceurl, null);
+      }
+
+      function postData(serviceurl, datastr) {
+        return executeAjax("POST", serviceurl, datastr);
+      }
+
+      function executeAjax(method, serviceurl, datastr) {
+        sessionId = localStorage.getItem("sessionId");
+        return $.ajax({
+          type: method,
+          url: serviceurl,
+          crossDomain: true,
+          contentType: "application/json",
+          cache: true,
+          jsonp: false,
+          data: datastr,
+          beforeSend: function (xhr) {
+            if (sessionId != undefined && sessionId != null) {
+              xhr.setRequestHeader("Authorization", "Basic " + sessionId);
+            }
+          },
+        });
+      }
     </script>
   </body>
 </html>

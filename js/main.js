@@ -1,10 +1,12 @@
 $(function () {
   const serverUrl = "http://localhost:3088";
+  localStorage.setItem("serverUrl", serverUrl);
   let sessionId;
 
   const storedCookie = Cookies.get("sessionId");
   if (storedCookie) {
     sessionId = storedCookie;
+    localStorage.setItem("sessionId", sessionId);
   }
 
   // Login
@@ -59,36 +61,49 @@ $(function () {
 
   //Booking Form
   $("#bookingSaveBtn").click(function (e) {
-    e.preventDefault();
-    const fromCity = $("#fromCities").val();
-    const toCity = $("#toCities").val();
-    const departureDate = $("#departureDate").val();
-    const returnDate = $("#returnDate").val();
-    const travellers = $("#travellers").val();
-    const optionname = $("#bookingForm").attr("data-formtype");
-
     const datastr = {
-      fromcityid: fromCity,
-      tocityid: toCity,
-      fromdate: departureDate,
-      todate: returnDate,
-      passengercount: travellers,
-      preferencename: "Travel",
-      optionname: optionname,
-    };
+      optionname: localStorage.getItem('TravelType'),
+      fromcityname: $('#fromCities option:selected').text(),
+      tocityname: $('#toCities option:selected').text(),
+      preferencename: localStorage.getItem('preferenceType'),
+      fromdate: $('#departureDate').val(),
+      todate: $('#departureDate').val(),
+      passengercount: Number($('#travellers').val()),
+      eventid:localStorage.getItem('eventid'),
+      guestid:localStorage.getItem('guestid')
+    }
     saveBookingForm(JSON.stringify(datastr)).then(function (response) {
       if (response.status === 0 && response.result.length) {
         successMsgPopup();
       }
     });
   });
-
+  $('#AccomBookingSaveBtn').click(function (e) {
+    const datastr = {
+      preferencename: localStorage.getItem('preferenceType'),
+      optionname: localStorage.getItem('AccommodationType'),
+      guestcount: $('#noOfGuests').val(),
+      checkout: $('#checkOutDate').val(),
+      checkin: $('#checkInDate').val(),
+      passengercount: parseInt($('#noOfGuests').val()),
+      eventid:localStorage.getItem('eventid'),
+      guestid:localStorage.getItem('guestid')
+    }
+    saveAccBookingForm(JSON.stringify(datastr)).then(function (response) {
+      if (response.status === 0 && response.result.length) {
+        successMsgPopup();
+      }
+    });
+  });
   // Functions
   function loginUser(datastr) {
     const url = `${serverUrl}/account/login`;
     return postData(url, datastr);
   }
-
+  function saveAccBookingForm(datastr) {
+    const url = `${serverUrl}/apis/v4/bizgaze/integrations/events/createaccomodation`;
+    return postData(url, datastr);
+  }
   function saveBookingForm(datastr) {
     const url = `${serverUrl}/apis/v4/bizgaze/integrations/events/createtravelpreferences`;
     return postData(url, datastr);
@@ -98,7 +113,6 @@ $(function () {
     const url = `${serverUrl}/apis/v4/bizgaze/integrations/events/getcitiesautocomplete`;
     return getData(url);
   }
-
   function successMsgPopup() {
     const successMsgHtml = `<div class="modal success-msg-modal fade" id="successMsgModal" aria-hidden="true" aria-labelledby="successMsgModal"
         tabindex="-1">
@@ -113,7 +127,7 @@ $(function () {
     $("#successMsgPopup").html(successMsgHtml);
     $("#successMsgModal").modal("show");
   }
-
+ 
   // Ajax Functions
   function getData(serviceurl) {
     return executeAjax("GET", serviceurl, null);
