@@ -29,8 +29,6 @@
      }
     }
     getpreference(eventdetailsid).then(function (preferResponse) {
-      debugger;
-      
       let preferRes = JSON.parse(preferResponse.result);
       if(preferRes !=null || preferRes !='' || preferRes !=undefined){
       for(var b=0; b<preferRes.length; b++){
@@ -79,6 +77,10 @@
                   $(`#booking_${bookpre}_${eventdetailsid}`).html(html)
                   }
           }
+          else{
+            html=`<div class="">No Data</div>`;
+            $(`#booking_${bookpre}_${eventdetailsid}`).html(html)
+          }
         });
         }
       }
@@ -90,10 +92,7 @@
   })
   //Details page End Here
   //preferences start here 
-
-
-
-      // Ajax Functions Start Here
+ // Ajax Functions Start Here
     function getData(serviceurl) {
         return executeAjax("GET", serviceurl, null);
     }
