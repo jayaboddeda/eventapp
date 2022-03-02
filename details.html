@@ -17,22 +17,21 @@
     <div class="page page--main">
       <!-- PAGE CONTENT -->
       <div class="event-img-header">
-        <img src="imgs/backbutton.svg" class="back-button" />
+        <a href="events.html"><img src="imgs/backbutton.svg" class="back-button" /></a>
         <img src="imgs/event-db-img.jpg" class="img-fluid event-img" />
       </div>
       <div
         class="page__content page__content--with-bottom-nav events-db-content event-page-content"
       >
         <div class="event-details">
-          <h2 class="caption__title">Wedding Invitation Event</h2>
+          <h2 class="caption__title"></h2>
           <div class="caption__desc">
             <img src="imgs/calendar (2).svg" /><span>
-              Jan 20,2022 to Jan 25,2022</span
-            >
+              <span class="eventstartdate"></span> to <span class="eventenddate"></span>
           </div>
           <div class="event-db-bottom-details">
             <div class="caption__desc event-city">
-              <img src="imgs/location.svg" /> <span> Hyderabad</span>
+              <img src="imgs/location.svg" /> <span class="eventcityname"></span>
             </div>
             <div class="caption__desc event-location">
               <img src="imgs/nav-location.svg" />
@@ -43,154 +42,14 @@
 
         <div class="event-details-content">
           <div class="des-title">Description</div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam,
+          <p class="eventdescription">
+           
           </p>
-          <div class="toggle mb-20">
-            <div class="toggle__item">
-              <input
-                class="toggle__input"
-                id="togg1"
-                type="checkbox"
-                name="toggle"
-              />
-              <label class="toggle__label border-btm" for="togg1"
-                ><img src="imgs/camposs.svg" class="toggle-img" /> Flight
-                <span></span
-              ></label>
-              <div class="toggle__content flight-details border-btm">
-                <ul class="d-flex justify-content-between r w-100">
-                  <li class="text-white w-30">NAME</li>
-                  <li class="text-white text-right w-70">William</li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">PNR</li>
-                  <li class="text-white text-right w-70">PIDZWFR</li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">SEAT</li>
-                  <li class="text-white text-right w-70">S1 56L</li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">CHECK IN</li>
-                  <li class="text-white text-right w-70">16:40 PM</li>
-                </ul>
-                <a class="btn btn-train-details-download btn-details-download"
-                  >Download</a
-                >
-              </div>
-            </div>
-            <div class="toggle__item">
-              <input
-                class="toggle__input"
-                id="togg2"
-                type="checkbox"
-                name="toggle"
-              />
-              <label class="toggle__label border-btm" for="togg2"
-                ><img src="imgs/car-white.svg" class="toggle-img" /> Transport
-                <span></span
-              ></label>
-              <div class="toggle__content border-btm">
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">DEPARTURE</li>
-                  <li class="text-white text-right w-70">
-                    Rajiv Gandhi International Airport
-                  </li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">ARRIVAL</li>
-                  <li class="text-white text-right w-70">Begumpet</li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">PERSONS</li>
-                  <li class="text-white text-right w-70">2 Adults</li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">TIME</li>
-                  <li class="text-white text-right w-70">
-                    28rd Feb 2022 5:30 Am
-                  </li>
-                </ul>
-
-                <a
-                  class="btn btn-transport-details-download btn-details-download"
-                  >Download</a
-                >
-              </div>
-            </div>
-            <div class="toggle__item">
-              <input
-                class="toggle__input"
-                id="togg3"
-                type="checkbox"
-                name="toggle"
-              />
-              <label class="toggle__label border-btm" for="togg3"
-                ><img src="imgs/stay.svg" class="toggle-img" /> Stay
-                <span></span
-              ></label>
-              <div class="toggle__content border-btm">
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">NAME</li>
-                  <li class="text-white text-right w-70">Lemon Tree Hotel</li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">PERSONS</li>
-                  <li class="text-white text-right w-70">2 Adults</li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">CHECK IN</li>
-                  <li class="text-white text-right w-70">
-                    28rd Feb 2022 6:30 Am
-                  </li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">CHECK OUT</li>
-                  <li class="text-white text-right w-70">
-                    28th Feb 2022 7:30 PM
-                  </li>
-                </ul>
-                <a class="btn btn-stay-details-download btn-details-download"
-                  >Download</a
-                >
-              </div>
-            </div>
-            <div class="toggle__item">
-              <input
-                class="toggle__input"
-                id="togg4"
-                type="checkbox"
-                name="toggle"
-              />
-              <label class="toggle__label" for="togg4"
-                ><img src="imgs/dine-white.svg" class="toggle-img" /> Dine
-                <span></span
-              ></label>
-              <div class="toggle__content">
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">Butter chicken</li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">Chicken tikka masala</li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">Chickpea stew</li>
-                </ul>
-                <ul class="d-flex justify-content-between w-100">
-                  <li class="text-white w-30">Butter chicken</li>
-                </ul>
-              </div>
-            </div>
+          <div class="qrcode-img">
+           
+          </div>
+          <div class="event-transport-details">
+         
           </div>
         </div>
       </div>
@@ -205,5 +64,6 @@
     <script src="js/swiper-init.js"></script>
     <script src="js/jquery.custom.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/details.js"></script>
   </body>
 </html>

@@ -163,6 +163,7 @@
             $(".my-bookings-content").html(dine_content).hide().fadeIn(500);
         });
         $('.details-page[data-btntype="detailsPage"]').click(function(){
+            localStorage.setItem('eventid', $('.slider-simple__slide.swiper-slide-active').attr('data-eventid'));
             window.location.href = '/details.html';
         })
     }

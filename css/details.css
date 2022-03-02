@@ -17,7 +17,7 @@ h2.caption__title {
 }
 .event-details-content {
   /* background: #3E3D40; */
-  padding: 18px;
+  padding: 18px  0px;
   border-radius: 20px;
   margin-top: 30px;
 }
@@ -77,4 +77,15 @@ img.back-button {
 }
 .border-btm {
   border-bottom: solid 1px rgb(255, 255, 255, 0.2);
+}
+.qr-text {
+  text-align: center;
+  padding: 15px 0px;
+  border: solid 1px rgb(255,255,255,0.7);
+  border-radius: 16px;
+  margin-bottom: 10px;
+  color: white;
+}
+.qrcode-img {
+  margin: 15px 0px;
 }

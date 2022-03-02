@@ -15,53 +15,38 @@
     <div class="page page--login" data-page="login">
       <div class="login">
         <div class="login__content">
-          <h2 class="login__title mb-10">Login</h2>
-          <p class="login__text mb-20">Please enter your Phone number</p>
-          <div class="text-center mb-40">
-            <img src="imgs/login-img.png" class="login__img" />
-          </div>
+          <div class="login-header">
+          <h2 class="login__title mb-10">Hello there !</h2>
+          <p class="login__text mb-20">Please enter your Phone number and password to get started</p>
+           </div>
           <div class="login-form">
+            <h2 class="login__title mb-10">Login</h2>
             <form id="LoginForm">
               <div class="login-form__row">
-                <label class="login-form__label">Mobile Number</label>
-                <input
-                  type="text"
-                  value=""
-                  class="login-form__input required"
-                  id="userName"
-                  placeholder="Please Enter Your Mobile Number"
-                />
+                <input type="text" value=""  class="login-form__input required" id="userName" placeholder="Phone"/>
               </div>
               <div class="login-form__row">
-                <label class="login-form__label">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  value=""
-                  class="login-form__input required"
-                  id="passWord"
-                  placeholder="Please Enter Your Password"
-                />
+                <input type="password"  name="password" value="" class="login-form__input required" id="passWord" placeholder="Password" />
+                <img src="imgs/visibility_black.svg" class="visibility-icon">
+                <div class="text-right forgot-password-div">
+                <a href="forgot-password.html" class="forgot-password" >forgot password?</a>
+              </div>
               </div>
               <div class="login-form__row mb-20">
                 <input
                   type="submit"
                   class="login-form__submit button button--main button--full"
                   id="loginBtn"
-                  value="LOGIN"
+                  value="Sign In"
                 />
               </div>
             </form>
-            <div class="login-form__forgot-pass">
-              <a href="forgot-password.html">Forgot Password?</a>
-            </div>
-            <div class="login-form__bottom">
-              <p>Don't have an account?</p>
-              <a href="signup.html" class="button button--blue button--full"
-                >SIGN UP</a
-              >
-            </div>
+          
           </div>
+           <div class="login-footer">
+             <div class="login-text-footer">By Signing in,you  agree to our <a href="">Terms of Use</a> and <a href="">Privacy policy</a></div>
+            </div>
+           </div>
         </div>
       </div>
     </div>
