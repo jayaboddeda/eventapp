@@ -62,7 +62,6 @@
             let bookingoptionname= bookRes[0].optionname;
             let bookingstatus = bookRes[0].status;
             let bookingguestcount = bookRes[0].guestcount;
-            alert(bookpre)
             if(bookpre =='Travel' ){
             html=`<ul class="d-flex justify-content-between w-100"><li class="text-white w-30">TYPE</li><li class="text-white text-right w-70">${bookingoptionname}</li></ul><ul class="d-flex justify-content-between w-100"><li class="text-white w-30">GUEST </li><li class="text-white text-right w-70">${bookingguestname}</li></ul><ul class="d-flex justify-content-between w-100"><li class="text-white w-30">DEPARTURE</li><li class="text-white text-right w-70">${bookingfromcity}</li></ul><ul class="d-flex justify-content-between w-100"><li class="text-white w-30">ARRIVAL</li><li class="text-white text-right w-70">${bookingtocity}</li></ul><ul class="d-flex justify-content-between w-100"><li class="text-white w-30">PERSONS</li><li class="text-white text-right w-70">${bookingguestcount}</li></ul><ul class="d-flex justify-content-between w-100"><li class="text-white w-30">DATE</li><li class="text-white text-right w-70">${bookingfromdate}</li></ul><ul class="d-flex justify-content-between w-100"><li class="text-white w-30">STATUS</li><li class="text-white text-right w-70">${bookingstatus}</li></ul>`;
             $(`#booking_${bookpre}_${eventdetailsid}`).html(html)
