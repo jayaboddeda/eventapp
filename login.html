@@ -27,7 +27,7 @@
               </div>
               <div class="login-form__row">
                 <input type="password"  name="password" value="" class="login-form__input required" id="passWord" placeholder="Password" />
-                <img src="imgs/visibility_black.svg" class="visibility-icon">
+                <img src="imgs/visibility_black.svg" class="visibility-icon" id="passwordHide">
                 <div class="text-right forgot-password-div">
                 <a href="forgot-password.html" class="forgot-password" >forgot password?</a>
               </div>
@@ -63,6 +63,11 @@
       if (storedCookie) {
         window.location.href = "/events.html";
       }
+      $('#passwordHide').click(function () {        
+                            var input = $('#passWord');
+                            input.attr('type') == "password" ? input.attr('type', 'text') : input.attr('type', 'password');
+                            $('#passWord').toggleClass('fa-eye-slash fa-eye');
+                        });
     </script>
   </body>
 </html>
