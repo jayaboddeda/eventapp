@@ -2787,9 +2787,9 @@ body.panel-closing .bottom-toolbar {
 .login-form__input {
   width: 100%;
   border: none;
-  background-color: white;
+  /* background-color: white; */
   padding: 15px;
-  color: #fff;
+  /* color: #fff; */
   border-bottom: 1px solid #fff;
   border-radius: 5px;
 }
