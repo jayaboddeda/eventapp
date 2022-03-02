@@ -60,6 +60,12 @@ $(document).ready(function () {
 		$(".bottom-navigation").on('click', '.bottom-navigation__more' ,function(){
 			swipernav.slideNext();
 		});
+		$('.gallery[data-btnType="gallery" ]').on('click', function(){
+			window.location.href="/gallery.html"
+		});
+		$('.profile[data-btnType="profile" ]').on('click', function(){
+			window.location.href="/profile.html"
+		});
 	});
 
 	

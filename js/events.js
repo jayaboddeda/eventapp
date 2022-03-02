@@ -37,7 +37,7 @@
                             let noBookingHtml = `<div class="my-bookings-list" id="mySetPreferList"><div class="my-bookings-card d-block text-center"><h5 class="dining-text">Please Choose your ${preferRes[k].eventname} preferences</h5><a class="btn btn-preferences" onclick='btnbookingList(this)' href="javascript:void(0)">Set preferences</a></div></div>`;
                             $(`div[data-planTrip="${preferRes[k].eventid}"]`).append(preferHtml);
                             $(`div[data-mybookingevent="${preferRes[k].eventid}"]`).html(noBookingHtml);
-                            //console.log("guestId : " +guestid,"Event : "+preferRes[k].eventid,"preferencename :"+preferRes[k].preferencename)
+                            console.log("guestId : " +guestid,"Event : "+preferRes[k].eventid,"preferencename :"+preferRes[k].preferencename)
                             getBooking(guestid,preferRes[k].eventid, preferRes[k].preferencename).then(function (bookingRes) {
                                 if(bookingRes.result !=null && bookingRes.result !='' && bookingRes.result != undefined){
                                     let bookRes = JSON.parse(bookingRes.result);
