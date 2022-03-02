@@ -300,14 +300,14 @@
   background-position: center center;
 }
 
-.gradient-purple,
+/* .gradient-purple,
 .header--page,
 .bottom-navigation__icons li.centered,
 .card--style-plan-premium,
 .page--intro {
   background-color: #cd6afb !important;
   background: linear-gradient(60deg, #cd6afb 0%, #624eeb 100%) !important;
-}
+} */
 
 /*===============================================*/
 /* 2. GENERAL		 						 */
@@ -324,7 +324,8 @@ body {
 
 body {
   font-family: "Rubik", sans-serif;
-  background: linear-gradient(#052e83, #612557);
+  /* background: linear-gradient(#052E83, #612557); */
+  background-color: #2b2147;
   color: #c4c4e2;
   margin: 0;
   padding: 0;
@@ -581,7 +582,7 @@ ul.custom-listing--checked li {
 }
 
 .page__content--with-header {
-  padding-top: 90px;
+  padding-top: 30px;
   height: 100%;
 }
 
@@ -885,11 +886,11 @@ body.panel-closing .bottom-toolbar {
 } */
 
 .header--fixed {
-  position: fixed;
+  /* position: fixed;
   top: 0;
   left: 0px;
   z-index: 888;
-  background-color: rgb(72, 72, 72, 0.9);
+  background-color: rgb(72,72,72,0.9); */
   padding: 10px 20px;
   height: 70px;
 }
@@ -1132,7 +1133,7 @@ body.panel-closing .bottom-toolbar {
   bottom: 0px;
   left: 0px;
   z-index: 888;
-  background-color: rgb(72, 72, 72, 0.9);
+  background-color: #4b3176;
   padding: 15px 0;
   overflow: hidden;
 }
@@ -1337,6 +1338,11 @@ body.panel-closing .bottom-toolbar {
   display: block;
   max-width: 12px;
   margin-right: 10px;
+}
+._bg-gradient {
+  background-image: url(../imgs/bg1.png), url(../imgs/bg2.png);
+  background-position: left top, right center;
+  background-repeat: no-repeat, no-repeat;
 }
 
 /*===============================================*/
@@ -2714,14 +2720,14 @@ body.panel-closing .bottom-toolbar {
 /*========================*/
 .page--login {
   height: 100%;
-  background: url("../imgs/login-bg.png") no-repeat;
+  background: url("../imgs/login.png") no-repeat;
   background-size: cover;
 }
 
 .login {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: top;
+  justify-content: top;
   width: 100%;
   height: 100%;
 }
@@ -2749,8 +2755,11 @@ body.panel-closing .bottom-toolbar {
 }
 
 .login-form {
-  width: 70%;
-  margin: auto;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(104px);
+  border-radius: 16px;
+  padding: 20px;
 }
 
 .login-form__row {
@@ -2778,10 +2787,11 @@ body.panel-closing .bottom-toolbar {
 .login-form__input {
   width: 100%;
   border: none;
-  background-color: transparent;
-  padding: 5px;
+  background-color: white;
+  padding: 15px;
   color: #fff;
   border-bottom: 1px solid #fff;
+  border-radius: 5px;
 }
 
 .login-form__submit {
@@ -2789,9 +2799,10 @@ body.panel-closing .bottom-toolbar {
   box-shadow: none;
   -webkit-box-shadow: none;
   -webkit-appearance: none;
-  background: transparent !important;
-  border: 1px solid #fff;
+  background: #3f48cc !important;
+  border: none;
   font-size: 16px;
+  text-transform: capitalize;
 }
 
 .login-form__forgot-pass {
@@ -4230,12 +4241,15 @@ a.plyr__controls__item.plyr__control:hover,
 .toggle {
   width: 100%;
   margin: 0 auto 0 auto;
+  background: rgba(75, 49, 118, 0.5);
+  padding: 5px;
+  border-radius: 16px;
 }
 .toggle__item {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: #3e3d40;
+  /* background-color: #3E3D40; */
   margin-bottom: 1px;
 }
 .toggle__input {
@@ -4277,9 +4291,10 @@ a.plyr__controls__item.plyr__control:hover,
 
 .toggle__input:checked ~ .toggle__label,
 .toggle .toggle__label:hover {
-  background: linear-gradient(145deg, #052e83, #612557);
+  background: #281b41;
   color: #fff;
   border: none;
+  border-radius: 10px;
 }
 
 .toggle__label span {
@@ -4607,8 +4622,6 @@ a.plyr__controls__item.plyr__control:hover,
 }
 
 .events-db-content .event-info-wrap {
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(30px);
   border-radius: 15px;
 }
 
@@ -4631,7 +4644,7 @@ a.plyr__controls__item.plyr__control:hover,
   height: 100%;
   width: 100%;
   background: linear-gradient(180deg, transparent 0, transparent 30%, #000);
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .events-db-content .event-db-details {
@@ -4835,18 +4848,15 @@ a.plyr__controls__item.plyr__control:hover,
   width: 70px;
   height: 70px;
 }
-.plan-trip-modal .travel-img-container a {
-  height: 100px;
-  justify-content: center;
-  align-items: center;
-}
-.plan-trip-modal .travel-img-container a {
+
+.plan-trip-modal .travel-img-container {
+  margin: 10px;
   border-radius: 10px;
   border: 1px solid #ccc;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-.plan-trip-modal .travel-img-container a.active {
+.plan-trip-modal .travel-img-container.active {
   border-color: #7b21a4 !important;
 }
 

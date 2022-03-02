@@ -24,6 +24,7 @@ $(function () {
       loginUser(JSON.stringify(datastr)).then(function (response) {
         if (response.status === 0 && response.result) {
           sessionId = response.result.sessionId;
+          localStorage.setItem("guestname",response.result.name);
           localStorage.setItem("guestid",response.result.userId);
           localStorage.setItem("sessionId", response.result.sessionId); 
           Cookies.set("sessionId", sessionId);
