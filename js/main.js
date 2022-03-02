@@ -1,6 +1,6 @@
 $(function () {
-  const serverUrl = "http://localhost:3088";
-  //const serverUrl = "http://192.168.88.252:82";
+  //const serverUrl = "http://localhost:3088";
+  const serverUrl = "http://192.168.88.252:82";
   localStorage.setItem("serverUrl", serverUrl);
   let sessionId;
 

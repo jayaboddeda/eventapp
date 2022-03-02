@@ -9,7 +9,7 @@
 
  const travelOptionsModal = ` <div class="modal fade plan-trip-modal" id="travelOptionsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="planTripModalLabel" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button> </div><div class="modal-body"> <div class="travel-options d-flex" id="travelOptionsWrap"> <div class="travel-option" data-travel-type="train"> <div class="travel-img-container active"> <img src="imgs/train.svg" class="travel-img p-4 rounded"/> </div></div><div class="travel-option" data-travel-type="ship"> <div class="travel-img-container"> <img src="imgs/ship.svg" class="travel-img p-4 rounded"/> </div></div><div class="travel-option" data-travel-type="flight"> <div class="travel-img-container"> <img src="imgs/flight.svg" class="travel-img p-4 rounded"/> </div></div><div class="travel-option" data-travel-type="bus"> <div class="travel-img-container"> <img src="imgs/bus.svg" class="travel-img p-4 rounded"/> </div></div></div></div></div></div></div>`;
  
- let serverUrl = "http://localhost:3088";
+ let serverUrl = localStorage.getItem("serverUrl");
  let guestid = localStorage.getItem("guestid");
  let sessionId = localStorage.getItem("sessionId");
  $('div[data-guestname="guestName"]').text(localStorage.getItem('guestname'));
