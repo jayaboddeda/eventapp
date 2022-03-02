@@ -7,6 +7,7 @@
     return getData(url);
   }
   getDetails(eventdetailsid).then(function (response) {
+    
     let _response = JSON.parse(response.result);
     if(_response !=null || _response !='' || _response !=undefined){
       let eventname = _response[0].eventname;
@@ -14,7 +15,7 @@
       let eventenddate = _response[0].enddate;
       let eventdescription = _response[0].eventdescription;
       let eventcityname = _response[0].cityname;
-      let eventqrcode = _response[0].qrcodepath;
+      let eventqrcode = _response[0].qrcodepath.replace(/~/g, '');
       $(".caption__title").html(eventname);
       $(".eventstartdate").html(eventstartdate);
       $(".eventenddate").html(eventenddate);
@@ -36,22 +37,22 @@
         type = preferRes[b].preferencename;
 
         if(type == 'Travel'){
-            preferencelist = `<div class="toggle__item" id="${preferRes[b].preferencename}_${preferRes[b].eventid}"><input  class="toggle__input"id="togg1"type="checkbox" name="toggle"/><label class="toggle__label border-btm" for="togg1"><img src="imgs/camposs.svg" class="toggle-img" /> ${preferRes[b].preferencename}<span></span></label><div class="toggle__content flight-details border-btm"  id="booking_${preferRes[b].preferencename}_${preferRes[b].eventid}"></div></div>`;
+            preferencelist = `<div class="toggle__item" id="${preferRes[b].preferencename}_${preferRes[b].eventid}"><input  class="toggle__input"id="togg1"type="checkbox" name="toggle"/><label class="toggle__label border-btm" for="togg1"><img src="imgs/camposs.svg" class="toggle-img" /> ${preferRes[b].preferencename}<span></span></label><div class="toggle__content toggle_content_details border-btm"  id="booking_${preferRes[b].preferencename}_${preferRes[b].eventid}"></div></div>`;
         }
         if(type == 'Transport'){
-          preferencelist = `<div class="toggle__item" id="${preferRes[b].preferencename}_${preferRes[b].eventid}"><input  class="toggle__input"id="togg2"type="checkbox" name="toggle"/><label class="toggle__label border-btm" for="togg2"><img src="imgs/car-white.svg" class="toggle-img" /> ${preferRes[b].preferencename}<span></span></label><div class="toggle__content flight-details border-btm"  id="booking_${preferRes[b].preferencename}_${preferRes[b].eventid}"></div></div>`;
+          preferencelist = `<div class="toggle__item" id="${preferRes[b].preferencename}_${preferRes[b].eventid}"><input  class="toggle__input"id="togg2"type="checkbox" name="toggle"/><label class="toggle__label border-btm" for="togg2"><img src="imgs/car-white.svg" class="toggle-img" /> ${preferRes[b].preferencename}<span></span></label><div class="toggle__content toggle_content_details border-btm"  id="booking_${preferRes[b].preferencename}_${preferRes[b].eventid}"></div></div>`;
         }
         if(type == 'Accommodation'){
-          preferencelist = `<div class="toggle__item" id="${preferRes[b].preferencename}_${preferRes[b].eventid}"><input  class="toggle__input"id="togg3"type="checkbox" name="toggle"/><label class="toggle__label border-btm" for="togg3"><img src="imgs/stay.svg" class="toggle-img" /> ${preferRes[b].preferencename}<span></span></label><div class="toggle__content flight-details border-btm"  id="booking_${preferRes[b].preferencename}_${preferRes[b].eventid}"></div></div>`;
+          preferencelist = `<div class="toggle__item" id="${preferRes[b].preferencename}_${preferRes[b].eventid}"><input  class="toggle__input"id="togg3"type="checkbox" name="toggle"/><label class="toggle__label border-btm" for="togg3"><img src="imgs/stay.svg" class="toggle-img" /> ${preferRes[b].preferencename}<span></span></label><div class="toggle__content toggle_content_details border-btm"  id="booking_${preferRes[b].preferencename}_${preferRes[b].eventid}"></div></div>`;
         }
         if(type == 'Food'){
-          preferencelist =`<div class="toggle__item" id="${preferRes[b].preferencename}_${preferRes[b].eventid}"><input  class="toggle__input"id="togg4"type="checkbox" name="toggle"/><label class="toggle__label border-btm" for="togg4"><img src="imgs/dine-white.svg" class="toggle-img" /> ${preferRes[b].preferencename}<span></span></label><div class="toggle__content flight-details border-btm"  id="booking_${preferRes[b].preferencename}_${preferRes[b].eventid}"></div></div>`;
+          preferencelist =`<div class="toggle__item" id="${preferRes[b].preferencename}_${preferRes[b].eventid}"><input  class="toggle__input"id="togg4"type="checkbox" name="toggle"/><label class="toggle__label border-btm" for="togg4"><img src="imgs/dine-white.svg" class="toggle-img" /> ${preferRes[b].preferencename}<span></span></label><div class="toggle__content toggle_content_details border-btm"  id="booking_${preferRes[b].preferencename}_${preferRes[b].eventid}"></div></div>`;
         }
         $(".event-details-content .event-transport-details").addClass("toggle mb-20").append(preferencelist);
         var guestid = localStorage.getItem('guestid');  
         getBooking(guestid,eventdetailsid,type).then(function (response) {
           bookRes = JSON.parse(response.result);
-          if(bookRes !=null || bookRes !='' || bookRes !=undefined){
+          if(bookRes == null || bookRes !='' || bookRes !=undefined){
             let bookpre = bookRes[0].preferencename;
             let bookingguestname = bookRes[0].guestname;
             let bookingfromcity = bookRes[0].fromcity;
@@ -77,19 +78,28 @@
                   $(`#booking_${bookpre}_${eventdetailsid}`).html(html)
                   }
           }
-          else{
-            html=`<div class="">No Data</div>`;
-            $(`#booking_${bookpre}_${eventdetailsid}`).html(html)
+        
+        });
+       
+       
+        }
+        $(".toggle_content_details").each(function(){
+          let checkdata = $(this).find("ul").length;
+          html=`<ul class=""><li>No Data</li></ul>`;
+          if(checkdata == 0)
+          {
+            $(this).html(html)
           }
         });
-        }
       }
      
      
     });
    
   
-  })
+  });
+
+  
   //Details page End Here
   //preferences start here 
  // Ajax Functions Start Here
@@ -126,4 +136,6 @@
         });
     }
     // Ajax Functions End Here
+
+   
    
