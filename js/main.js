@@ -64,13 +64,14 @@ $(function () {
   }
 
   // abhiram
+
 //registration 
-$("#registration").click(function (e) {debugger
+$("#registration").click(function (e) {
+  e.preventDefault();
   phonenumber = $("#registrationphonenumber").val()
   localStorage.setItem('phonenumber',phonenumber)
   checkregistration().then(function (response) {
-    if(response.result.userId)
-    {
+    if(response.status != 2 ){
       localStorage.setItem("unibaseid",response.result.unibaseId);
       localStorage.setItem("tenantId",response.result.tenantId);
      const datastr = {
@@ -106,7 +107,8 @@ $("#registration").click(function (e) {debugger
 
 
 });
-$(".registration-status").click(function(){
+$(".registration-status").click(function(e){
+  e.preventDefault();
  $(this).addClass("d-none").removeClass("d-flex align-items-center")
 })
 function saveregistration(datastr) {
@@ -127,6 +129,7 @@ function createuser(datastr) {
 //registration  ends
 //verify Otp
 $("#verifybtn").click(function (e) {
+  e.preventDefault();
   phonenumber = localStorage.getItem("phonenumber");
  optid = localStorage.getItem("otpid");
  let otpnumber = $("#otpsend").val()
@@ -163,7 +166,8 @@ function saveotp(datastr) {
 //verify Otp Ends Here
 
 //create register
- $("#enter-password").click(function() {
+ $("#enter-password").click(function(e) {
+  e.preventDefault();
           let newpassword = $("#newpassword").val(); 
           let confirmpassword = $("#confirmpassword").val(); 
           let passwordlength = $("#newpassword").val().length
@@ -188,11 +192,11 @@ function saveotp(datastr) {
                
                 }
               createuser(JSON.stringify(datastr)).then(function (response) {
-                if (response.status === 0 && response.result.contactConfirmed ) {
+                // if (response.status === 0 && response.result.contactConfirmed ) {
                  //  localStorage.removeItem("otpid")
-                  window.location.href = '../login.html';
+                  //window.location.href = '../login.html';
                   $('#confirmmessage').modal('show');
-                }
+                // }
                });
             }
           }

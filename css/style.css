@@ -593,6 +593,7 @@ ul.custom-listing--checked li {
 .page__content.page__content--with-header.page__content--with-bottom-nav,
 .page__content.page__content--with-bottom-nav.page__content--with-header {
   height: calc(100% - 70px);
+  padding-bottom: 130px;
 }
 
 .page__title-bar {
@@ -5035,7 +5036,7 @@ form#LoginForm {
 }
 img.visibility-icon {
   position: absolute;
-  right: 10%;
+  right: 15%;
   margin-top: 10px;
 }
 
