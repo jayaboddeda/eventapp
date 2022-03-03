@@ -1,6 +1,6 @@
 $(function () {
-  //const serverUrl = "http://localhost:3088";
-  const serverUrl = "http://192.168.88.252:82";
+  const serverUrl = "http://localhost:3088";
+  //const serverUrl = "http://192.168.88.252:82";
   localStorage.setItem("serverUrl", serverUrl);
   let sessionId;
 
@@ -64,15 +64,24 @@ $(function () {
   //Booking Form
   $("#bookingSaveBtn").click(function (e) {
     const datastr = {
-      optionname: localStorage.getItem('TravelType'),
-      fromcityname: $('#fromCities option:selected').text(),
-      tocityname: $('#toCities option:selected').text(),
-      preferencename: localStorage.getItem('preferenceType'),
+
+      businessclasscount: "3",
+      eventid: localStorage.getItem('eventid'),
+      fromcityid: "0",
+      fromcityid_cityname:  $('#fromCities option:selected').text(),
       fromdate: $('#departureDate').val(),
-      todate: $('#departureDate').val(),
-      passengercount: Number($('#travellers').val()),
-      eventid:localStorage.getItem('eventid'),
-      guestid:localStorage.getItem('guestid')
+      guestid: localStorage.getItem('guestid'),
+      guestpreferenceid: "0",
+      optionid: "0",
+      optionid_optionname: localStorage.getItem('TravelType'),
+      passengercount: "",
+      preferenceid: "0",
+      preferenceid_preferencename: localStorage.getItem('preferenceType'),
+      preferncestatusid: "1",
+      preferncestatusid_DropDownName: "0",
+      tocityid: "0",
+      tocityid_cityname: $('#toCities option:selected').text(),
+      todate: $('#departureDate').val()
     }
     saveBookingForm(JSON.stringify(datastr)).then(function (response) {
       if (response.status === 0 && response.result.length) {
@@ -122,12 +131,13 @@ $(function () {
             <div class="modal-content">
                 <img class="success-img my-5" src="./imgs/checked.png">
                 <span class="success-title mb-5">Successfully Saved</span>
-                <button class="btn btn-primary next-btn mb-5">Next Step</button>
-                <a href="#" class="goback-link mb-5" data-bs-dismiss="modal" aria-label="Close"><u>Go Back</u></a>
+                <button class="btn btn-primary d-none next-btn mb-5">Next Step</button>
+                <a href="/events.html" class="goback-link mb-5" data-bs-dismiss="modal" aria-label="Close"><u>Go Back</u></a>
             </div>
         </div>`;
     $("#successMsgPopup").html(successMsgHtml);
     $("#successMsgModal").modal("show");
+    
   }
  
   // Ajax Functions

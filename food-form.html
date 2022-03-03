@@ -112,11 +112,17 @@
             })
             const datastr = {
                     "addfoodoption":[{
-                        "eventid":localStorage.getItem('eventid'),
-                        "guestid":localStorage.getItem('guestid'),
-                        "optionname":optionname.join(),
-                        "preference":localStorage.getItem('preferenceType')
-                        }]
+                        eventid: localStorage.getItem('eventid'),
+                        guestid: localStorage.getItem('guestid'),
+                        guestpreferenceid: "0",
+                        optionid: "0",
+                        optionid_optionname: optionname.join(),
+                        preferenceid: "0",
+                        preferenceid_preferencename: localStorage.getItem('preferenceType'),
+                        preferncestatusid: "1",
+                        preferncestatusid_DropDownName: "0"
+                        }],
+                        "guestpreferenceid": "0"
                 }
             saveFoodBookingForm(JSON.stringify(datastr)).then(function (response) {
             if (response.status === 0 && response.result.length) {

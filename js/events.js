@@ -56,9 +56,9 @@
                                             bookListHtml += ``;
                                         }
                                     }
-                                    $(`a.plan-trip-item.plan-trip-content-btn`).removeClass('btn-active')
-                                    $(`a.plan-trip-item[data-btntype="${type}"]`).addClass('btn-active')
-                                    $(`div[data-mybookingevent="${eventId}"]`).html(bookListHtml);
+                                    $(`.swiper-slide[data-eventid="${eventId}"]`).find(`a.plan-trip-item.plan-trip-content-btn`).removeClass('btn-active');
+                                    $(`.swiper-slide[data-eventid="${eventId}"]`).find(`a.plan-trip-item[data-btntype="${type}"]`).addClass('btn-active');
+                                    $(`.swiper-slide[data-eventid="${eventId}"]`).find(`div[data-mybookingevent="${eventId}"]`).html(bookListHtml);
                                 }
                             });
                         }
@@ -93,33 +93,35 @@
         $(".plan-trip-content-btn").removeClass("btn-active");
         $(e).addClass("btn-active");
         let preferenceType = $(e).attr('data-btntype');
+        localStorage.setItem('preferenceId',  $(e).attr('data-preferid'));
         let guestid = localStorage.getItem('guestid');
         let eventid = $('.slider-simple__slide.swiper-slide-active').attr('data-eventid');
         let eventTitle = $('.slider-simple__slide.swiper-slide-active').find('.caption__title').text();
         let noBookingHtml = `<div class="my-bookings-list" id="mySetPreferList"><div class="my-bookings-card d-block text-center"><h5 class="dining-text">Please Choose your ${eventTitle} preferences</h5><a class="btn btn-preferences" onclick='btnbookingList(this)' href="javascript:void(0)">Set preferences</a></div></div>`;                       
-        let bookRes;
+        let bookRes, bookListHtml='', res="false";
         getBooking(guestid,eventid,preferenceType).then(function (response) {
-            bookRes = JSON.parse(response.result);
-            let bookListHtml ='';
-            for(var b=0; b<bookRes.length; b++){
-                eventid = bookRes[b].eventid;
-                //localStorage.getItem('eventid',eventid )
-                if(bookRes[b].preferencename == 'Food'){
-                    bookListHtml +=`<div class="my-bookings-list mt-20" id="myBookingsList_${bookRes[b].eventid}" data-prefername="${bookRes[b].preferencename}"><div class="my-bookings-card d-block"><ul class="d-flex justify-content-between align-items-center w-100" style="font-size:22px"><li class="text-white">${bookRes[b].preferencename}</li><li class="text-white"><span><i class="las la-utensils"></i></span></li></ul><ul class="d-flex justify-content-between py-1 pt-2 align-items-center w-100"><li class="text-white">Type</li><li class="text-white">${bookRes[b].optionname}</li></ul></div></div>`;
-                }if(bookRes[b].preferencename == 'Travel'){
-                    bookListHtml += `<div class="my-bookings-list mt-20" id="myBookingsList_${bookRes[b].eventid}" data-prefername="${bookRes[b].preferencename}"><div class="my-bookings-card d-block"><ul class="d-flex justify-content-between align-items-center w-100"><li class="text-white">From</li><li class="text-white">To</li></ul><ul class="d-flex align-items-center w-100"><li class="from-city text-truncate w-30">${bookRes[b].fromcity}</li><li class="w-40"><ul class="d-flex align-items-center w-100"><li class="border-bottom px-20 w-100"></li><li class="px-2 w-100"><img src="imgs/event-flight.svg" class="w-100"></li><li class="border-bottom px-20 w-100"></li></ul></li><li class="to-city w-30 text-right text-truncate">${bookRes[b].tocity}</li></ul><ul class="d-flex justify-content-between align-items-center w-100"><li class="from-city-details w-50 text-left text-white">Rajiv Gandhi International Airport</li><li class="to-city-details w-50 text-right text-white">Kempegowda International Airport Bengaluru</li></ul><ul class="d-flex justify-content-between align-items-center w-100 pt-20"><li><div class="d-flex status-checking align-items-center text-white"><img src="imgs/booking-clock.svg"> <span class="px-2">${bookRes[b].status}</span></div></li><li><button class="btn btn-download" disabled>Download</button></li></ul></div></div>`;
-                }if(bookRes[b].preferencename == 'Accommodation'){
-                    bookListHtml += `<div class="my-bookings-list mt-20" id="myBookingsList_${bookRes[b].eventid}" data-prefername="${bookRes[b].preferencename}"><div class="my-bookings-card d-block"><ul class="d-flex justify-content-between align-items-center w-100" style="font-size:22px"><li class="text-white">${bookRes[b].optionname}</li><li class="text-white"><span><i class="las la-bed"></i></span></li></ul><ul class="d-flex justify-content-between py-1 pt-2 align-items-center w-100"><li class="text-white">Check-in</li><li class="text-white">Check-out</li></ul><ul class="d-flex justify-content-between py-1 pt-2 align-items-center w-100"><li class="text-white">${bookRes[b].fromdate}</li><li class="text-white">${bookRes[b].fromdate}</li></ul><ul class="d-flex justify-content-center pt-2 align-items-center w-100"><li class="text-white">${bookRes[b].guestcount} Adults</li></ul></div></div>`;
+            if(response.result != undefined && response.result != '' && response.result != null){
+                bookRes = JSON.parse(response.result);
+                for(var b=0; b<bookRes.length; b++){
+                    eventid = bookRes[b].eventid;
+                    //localStorage.getItem('eventid',eventid )
+                    if(bookRes[b].preferencename == 'Food'){
+                        bookListHtml +=`<div class="my-bookings-list mt-20" id="myBookingsList_${bookRes[b].eventid}" data-prefername="${bookRes[b].preferencename}"><div class="my-bookings-card d-block"><ul class="d-flex justify-content-between align-items-center w-100" style="font-size:22px"><li class="text-white">${bookRes[b].preferencename}</li><li class="text-white"><span><i class="las la-utensils"></i></span></li></ul><ul class="d-flex justify-content-between py-1 pt-2 align-items-center w-100"><li class="text-white">Type</li><li class="text-white">${bookRes[b].optionname}</li></ul></div></div>`;
+                    }if(bookRes[b].preferencename == 'Travel'){
+                        bookListHtml += `<div class="my-bookings-list mt-20" id="myBookingsList_${bookRes[b].eventid}" data-prefername="${bookRes[b].preferencename}"><div class="my-bookings-card d-block"><ul class="d-flex justify-content-between align-items-center w-100"><li class="text-white">From</li><li class="text-white">To</li></ul><ul class="d-flex align-items-center w-100"><li class="from-city text-truncate w-30">${bookRes[b].fromcity}</li><li class="w-40"><ul class="d-flex align-items-center w-100"><li class="border-bottom px-20 w-100"></li><li class="px-2 w-100"><img src="imgs/event-flight.svg" class="w-100"></li><li class="border-bottom px-20 w-100"></li></ul></li><li class="to-city w-30 text-right text-truncate">${bookRes[b].tocity}</li></ul><ul class="d-flex justify-content-between align-items-center w-100 pt-2"><li><div class="d-flex status-checking align-items-center text-white"><img src="imgs/booking-clock.svg"> <span class="px-2">${bookRes[b].status}</span></div></li><li><button class="btn btn-download" disabled>Download</button></li></ul></div></div>`;
+                    }if(bookRes[b].preferencename == 'Accommodation'){
+                        bookListHtml += `<div class="my-bookings-list mt-20" id="myBookingsList_${bookRes[b].eventid}" data-prefername="${bookRes[b].preferencename}"><div class="my-bookings-card d-block"><ul class="d-flex justify-content-between align-items-center w-100" style="font-size:22px"><li class="text-white">${bookRes[b].optionname}</li><li class="text-white"><span><i class="las la-bed"></i></span></li></ul><ul class="d-flex justify-content-between py-1 pt-2 align-items-center w-100"><li class="text-white">Check-in</li><li class="text-white">Check-out</li></ul><ul class="d-flex justify-content-between py-1 pt-2 align-items-center w-100"><li class="text-white">${bookRes[b].fromdate}</li><li class="text-white">${bookRes[b].fromdate}</li></ul><ul class="d-flex justify-content-center pt-2 align-items-center w-100"><li class="text-white">${bookRes[b].guestcount} Adults</li></ul></div></div>`;
+                    }
+                    if(bookRes[b].preferencename == 'Transport'){
+                        bookListHtml += ``; 
+                    }
                 }
-                if(bookRes[b].preferencename == 'Transport'){
-                    bookListHtml += ``;
-                }
+                $(`div[data-mybookingevent="${eventid}"]`).html(bookListHtml);
+            }else{
+                $(`div[data-mybookingevent="${eventid}"]`).html(noBookingHtml);
             }
-            $(`div[data-mybookingevent="${eventid}"]`).html(bookListHtml);
+            
         });
-        if(bookRes == undefined || bookRes == null || bookRes == ''){
-            $(`div[data-mybookingevent="${eventid}"]`).html(noBookingHtml);
-        }
     }
     function btnbookingList(e){
         let bookingType = $(e).parents('.event-bottom-content').find('.plan-a-trip-wrap .plan-trip-content-btn.btn-active').text();

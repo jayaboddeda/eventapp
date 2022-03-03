@@ -13,20 +13,17 @@
 
   <body>
     <div class="welcome-main">
-      <h1 class="welcome-heading">
-        Hello! <br />
-        Abhi Welcome
-      </h1>
-      <div class="welcome-footer">
+      <h1 class="welcome-heading">Hello there! <br /></h1>
+      <div class="welcome-footer hidden">
         <button
-          class="plan-trip-btn"
+          class="plan-trip-btn d-none"
           data-bs-toggle="modal"
           data-bs-target="#planTripModal"
           onclick="BookOption(this)"
         >
           Plan your Trip
         </button>
-        <a href="events.html" class="skip-trip-btn">Skip</a>
+        <a href="events.html" class="skip-trip-btn d-none">Skip</a>
 
         <!-- Modal -->
         <div
@@ -41,14 +38,18 @@
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <button
+                <a
                   type="button"
                   class="btn-close"
+                  href="events.html"
                   data-bs-dismiss="modal"
                   aria-label="Close"
-                ></button>
+                ></a>
               </div>
               <div class="modal-body">
+                <p class="text-left text-dark" style="font-size: 18px">
+                  Please select from the options below
+                </p>
                 <div class="travel-options d-flex">
                   <div class="travel-option">
                     <div class="travel-img-container active">
@@ -131,6 +132,10 @@
         localStorage.setItem("TravelType", TravelType);
         window.location.href = `/flight-form.html`;
       }
+      $(".plan-trip-btn").click();
+      $('a[aria-label="Close"]').on("click", function () {
+        window.location.href = "/events.html";
+      });
       function BookOption() {
         $(".travel-options").empty();
         let preferenceId = localStorage.getItem("preferenceId");
