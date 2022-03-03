@@ -3,6 +3,8 @@ $(function () {
   //const serverUrl = "http://192.168.88.252:82";
   localStorage.setItem("serverUrl", serverUrl);
   let sessionId;
+  let optid;
+  let  phonenumber;
 
   const storedCookie = Cookies.get("sessionId");
   if (storedCookie) {
@@ -60,6 +62,156 @@ $(function () {
         }
       });
   }
+
+  // abhiram
+//registration 
+$("#registration").click(function (e) {debugger
+  phonenumber = $("#registrationphonenumber").val()
+  localStorage.setItem('phonenumber',phonenumber)
+  checkregistration().then(function (response) {
+    if(response.result.userId)
+    {
+      localStorage.setItem("unibaseid",response.result.unibaseId);
+      localStorage.setItem("tenantId",response.result.tenantId);
+     const datastr = {
+       ContactNumber: "",
+       ContactOrEmail: phonenumber,
+       Email: "",
+       FirstName: "",
+       IsForgotPswd: false,
+       IsRegisterUser: true,
+       IsSignup: false,
+       LastName: "",
+       OtpId: 0,
+       TenantName: "",
+       UnibaseId: "",
+       UserOtp: ""
+       }
+     saveregistration(JSON.stringify(datastr)).then(function (response) {
+       // if (response.status === 0 && response.result.length) {
+       //    window.location.href = '../otp-confirmation.html';
+       // }
+        localStorage.setItem("otpid",response);
+        localStorage.setItem("phonenumber",phonenumber);
+       
+       window.location.href = '../otp-confirmation.html';
+     });
+    }
+    else{
+      $(".registration-status").removeClass("d-none").addClass("d-flex align-items-center")
+    }
+    
+  });
+  
+
+
+});
+$(".registration-status").click(function(){
+ $(this).addClass("d-none").removeClass("d-flex align-items-center")
+})
+function saveregistration(datastr) {
+ const url = `${serverUrl}/account/sendotp/`;
+ return postData(url, datastr);
+}
+function checkregistration() {
+ const url = `${serverUrl}/account/getcontactbyphoneormail/${phonenumber}/1`;
+ return getData(url);
+}
+function createuser(datastr) {
+ const url = `${serverUrl}/account/registeruser`;
+ return postData(url, datastr);
+}
+
+
+
+//registration  ends
+//verify Otp
+$("#verifybtn").click(function (e) {
+  phonenumber = localStorage.getItem("phonenumber");
+ optid = localStorage.getItem("otpid");
+ let otpnumber = $("#otpsend").val()
+ const datastr = {
+   ContactNumber: "",
+   ContactOrEmail:"",
+   Email: "",
+   FirstName: "",
+   IsForgotPswd: false,
+   IsRegisterUser: true,
+   IsSignup: false,
+   LastName: "",
+   OtpId: optid,
+   TenantName: "",
+   UnibaseId: "",
+   UserOtp: otpnumber
+   }
+ saveotp(JSON.stringify(datastr)).then(function (response) {
+   if (response.status === 0 && response.result.contactConfirmed ) {
+     localStorage.removeItem("otpid")
+     window.location.href = '../enter-password.html';
+   }
+   else{
+       $(".otp-message").addClass("d-flex align-items-center").removeClass("d-none")
+   }
+  
+ });
+
+});
+function saveotp(datastr) {
+ const url = `${serverUrl}/account/verifyotp`;
+ return postData(url, datastr);
+}
+//verify Otp Ends Here
+
+//create register
+ $("#enter-password").click(function() {
+          let newpassword = $("#newpassword").val(); 
+          let confirmpassword = $("#confirmpassword").val(); 
+          let passwordlength = $("#newpassword").val().length
+          if(newpassword == confirmpassword)
+          { 
+            if(passwordlength < 6)
+            {
+               html='<span><img src="imgs/Info_Red.svg"></span><span class="h4 ml-10"> Password must contain atleat 6 characters </span>';
+               $(".error-message").removeClass("d-none").addClass("d-flex align-items-center").html(html)
+            }
+            else{
+              let unibaseid = localStorage.getItem("unibaseid")
+              let tenantId = localStorage.getItem("tenantId")
+              let phonenumber = localStorage.getItem("phonenumber")
+
+              const datastr = {
+                ContactNumber: phonenumber,
+                Email: "",
+                Password: newpassword,
+                TenantId: tenantId,
+                UserName:unibaseid
+               
+                }
+              createuser(JSON.stringify(datastr)).then(function (response) {
+                if (response.status === 0 && response.result.contactConfirmed ) {
+                 //  localStorage.removeItem("otpid")
+                  window.location.href = '../login.html';
+                  $('#confirmmessage').modal('show');
+                }
+               });
+            }
+          }
+          else{
+              html='<span><img src="imgs/Info_Red.svg"></span><span class="h4 ml-10"> Password does not match</span>';
+               $(".error-message").removeClass("d-none").addClass("d-flex align-items-center").html(html)
+          }
+          $(".error-message").click(function(){
+              $(this).addClass("d-none").removeClass("d-flex align-items-center")
+          })
+          
+       });
+
+//create register Ends Here 
+
+
+
+
+  //abhiram ends here
 
   //Booking Form
   $("#bookingSaveBtn").click(function (e) {

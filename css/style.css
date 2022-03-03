@@ -4994,7 +4994,7 @@ img.img-poster.image-fluid {
   text-align: left;
   color: #ffffff;
   font-weight: 600;
-  font-size: 3.4rem;
+  font-size: 3rem;
   margin-bottom: 40px;
   padding: 0px;
 }
@@ -5037,4 +5037,38 @@ img.visibility-icon {
   position: absolute;
   right: 10%;
   margin-top: 10px;
+}
+
+.registration_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 75%;
+  margin-top: 100px;
+  width: 100%;
+}
+.float-right
+{
+  float: right;
+  margin-top: 5px;
+}
+.confirm-body {
+  text-align: center;
+  padding: 16px;
+}
+#model-content-body
+{
+  background:rgb(255,255,255,0.3) !important;
+  text-align: center;
+  padding: 16px;
+  border: none !important;
+  border-radius: 16px;
+}
+div#confirmmessage {
+  height: 100%;
+  background: url(../imgs/login.png) no-repeat;
+  background-size: cover;
+}
+.modal-dialog.modal-dialog-centered.confirmmodel {
+  padding: 20px;
 }
